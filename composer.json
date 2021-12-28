@@ -13,7 +13,8 @@
         "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "webpatser/laravel-uuid": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
