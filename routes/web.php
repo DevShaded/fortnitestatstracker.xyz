@@ -22,7 +22,6 @@ Route::prefix('/player')->group(function () {
     Route::get('/{username}', [FortniteController::class, 'player'])->name('fn-player');
 
     Route::post('/search', [FortniteController::class, 'search']);
-    Route::post('/update', [FortniteController::class, 'update']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
