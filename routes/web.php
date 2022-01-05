@@ -18,6 +18,22 @@ use Inertia\Inertia;
 
 Route::get('/', [FortniteController::class, 'index']);
 
+Route::get('/creative', function () {
+    return Inertia::render('Creative/Index');
+});
+
+Route::get('/events', function () {
+    return Inertia::render('Events/Index');
+});
+
+Route::get('/news', function () {
+    return Inertia::render('News/Index');
+});
+
+Route::get('/shop', function () {
+    return Inertia::render('Shop/Index');
+});
+
 Route::prefix('/player')->group(function () {
     Route::get('/{username}', [FortniteController::class, 'player'])->name('fn-player');
 
