@@ -7,7 +7,7 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <Link>
+                            <Link href="/">
                                 <img class="block lg:hidden h-12 w-auto mt-2" src="/images/logo.svg" alt="Fortnite_Logo" />
                                 <img class="hidden lg:block h-12 w-auto mt-2" src="/images/logo.svg" alt="Fortnite_Logo" />
                             </Link>
@@ -15,9 +15,9 @@
                         <div class="hidden sm:block sm:ml-6">
                             <div class="flex space-x-4">
                                 <nav-link href="/shop" :active="$page.url === '/shop'">Shop</nav-link>
-                                <nav-link href="/shop" :active="$page.url === '/news'">News</nav-link>
-                                <nav-link href="/shop" :active="$page.url === '/events'">Events</nav-link>
-                                <nav-link href="/shop" :active="$page.url === '/creative'">Creative</nav-link>
+                                <nav-link href="/news" :active="$page.url === '/news'">News</nav-link>
+                                <nav-link href="/events" :active="$page.url === '/events'">Events</nav-link>
+                                <nav-link href="/creative" :active="$page.url === '/creative'">Creative</nav-link>
                             </div>
                         </div>
                     </div>
@@ -35,9 +35,9 @@
             <DisclosurePanel class="sm:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <responsive-nav-link as="a" href="/shop" :active="$page.url === '/shop'">Shop</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/shop" :active="$page.url === '/news'">News</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/shop" :active="$page.url === '/events'">Events</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/shop" :active="$page.url === '/creative'">Creative</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/news" :active="$page.url === '/news'">News</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/events" :active="$page.url === '/events'">Events</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/creative" :active="$page.url === '/creative'">Creative</responsive-nav-link>
                 </div>
             </DisclosurePanel>
         </Disclosure>
