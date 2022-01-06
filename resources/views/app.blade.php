@@ -27,6 +27,7 @@
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://kit.fontawesome.com/566002e451.js" crossorigin="anonymous"></script>
     </head>
     <body class="font-fortnite antialiased">
         @inertia
