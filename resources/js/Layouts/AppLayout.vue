@@ -34,10 +34,10 @@
 
             <DisclosurePanel class="sm:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <responsive-nav-link as="a" href="/shop" :active="$page.url === '/shop'">Shop</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/news" :active="$page.url === '/news'">News</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/events" :active="$page.url === '/events'">Events</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/creative" :active="$page.url === '/creative'">Creative</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/shop" :active="$page.url === '/shop'"><i class="fad fa-shopping-cart"></i> Shop</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/news" :active="$page.url === '/news'"><i class="fad fa-newspaper text-light-pruple"></i> News</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/events" :active="$page.url === '/events'"><i class="fad fa-calendar-week"></i> Events</responsive-nav-link>
+                    <responsive-nav-link as="a" href="/creative" :active="$page.url === '/creative'"><i class="fad fa-pencil-paintbrush"></i> Creative</responsive-nav-link>
                 </div>
             </DisclosurePanel>
         </Disclosure>
