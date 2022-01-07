@@ -11,8 +11,15 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                'dark-purple': '#2a095f',
+                'light-purple': '#3d02bd',
+                'pink': '#e25bff',
+                'light-pink': '#ddb1ff'
+            },
+
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'fortnite': ['Staatliches', 'cursive'],
             },
         },
     },
