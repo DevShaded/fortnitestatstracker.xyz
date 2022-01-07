@@ -2,7 +2,7 @@
     <app-layout>
         <div v-if="!data">
             <div class="max-w-2xl mx-auto bg-light-purple mt-8 p-4">
-                <h2 class="text-center text-yellow-400">Leaderboard is not available</h2>
+                <h2 class="text-center text-yellow-400"><i class="fad fa-trophy"></i> Leaderboard is not available</h2>
             </div>
         </div>
 
@@ -12,8 +12,8 @@
                     <!-- Highest K/D  -->
                     <Link :href="'/player/' + data.leaderboard.highestKD.username">
                         <div style="background-color: #2f3136">
-                            <div class="bg-green-500 text-green-900 p-3">
-                                <span class="text-xl">Highest K/D</span>
+                            <div class="bg-green-500 text-green-900 p-3 hover:text-blue-600">
+                                <span class="text-xl"><i class="fad fa-skull-crossbones"></i> Highest K/D</span>
                             </div>
                             <div class="p-3">
                                 <h3 class="text-white text-xl">{{ data.leaderboard.highestKD.username }}</h3>
@@ -25,8 +25,8 @@
                     <!-- Most Wins -->
                     <Link :href="'/player/' + data.leaderboard.mostWins.username">
                         <div style="background-color: #2f3136">
-                            <div class="bg-blue-500 text-blue-900 p-3">
-                                <span class="text-xl">Most Wins</span>
+                            <div class="bg-blue-500 text-blue-900 p-3 hover:text-yellow-400">
+                                <span class="text-xl"><i class="fad fa-trophy"></i> Most Wins</span>
                             </div>
                             <div class="p-3">
                                 <h3 class="text-white text-xl">{{ data.leaderboard.mostWins.username }}</h3>
@@ -38,8 +38,8 @@
                     <!-- Highest Winrate -->
                     <Link :href="'/player/' + data.leaderboard.highestWinrate.username">
                         <div style="background-color: #2f3136">
-                            <div class="bg-red-500 text-red-900 p-3">
-                                <span class="text-xl">Highest Winrate</span>
+                            <div class="bg-red-500 text-red-900 p-3 hover:text-gray-200">
+                                <span class="text-xl"><i class="fas fa-percentage"></i> Highest Winrate</span>
                             </div>
                             <div class="p-3">
                                 <h3 class="text-white text-xl">{{ data.leaderboard.highestWinrate.username }}</h3>
