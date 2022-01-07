@@ -21,5 +21,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/fortnite/news/br', FortniteNewsController::class);
-
-Route::post('/player/update', [FortniteController::class, 'update']);
