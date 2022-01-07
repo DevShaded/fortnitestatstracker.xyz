@@ -2,13 +2,14 @@
     <div>
         <div v-if="!news">
             <div class="max-w-2xl mx-auto bg-light-purple mt-8 p-4">
-                <h2 class="text-center text-yellow-400">News are not available</h2>
+                <h2 class="text-center text-yellow-400"><i class="fad fa-newspaper text-white"></i> News are not available</h2>
             </div>
         </div>
 
-        <div v-else class="px-5 py-8">
-            <div v-for="item in news" :key="item.id" class="max-w-2xl mx-auto bg-light-purple rounded-md my-8">
-                <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+        <div v-else class="max-w-3xl mx-auto px-5 py-8">
+            <h4 class="text-white text-xl"><i class="fad fa-newspaper"></i> Current Fortnite News</h4>
+            <div v-for="item in news" :key="item.id" class="bg-light-purple rounded-md">
+                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8">
                     <div>
                         <img class="h-full" :src="item.image" alt="Fortnite Picture">
                     </div>
