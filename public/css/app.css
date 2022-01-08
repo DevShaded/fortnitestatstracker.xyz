@@ -966,10 +966,6 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -1009,9 +1005,6 @@ select {
 .mt-1 {
   margin-top: 0.25rem;
 }
-.ml-2 {
-  margin-left: 0.5rem;
-}
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -1029,6 +1022,9 @@ select {
 }
 .ml-1 {
   margin-left: 0.25rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
 }
 .-mr-0\.5 {
   margin-right: -0.125rem;
@@ -1054,14 +1050,14 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .mb-3 {
   margin-bottom: 0.75rem;
 }
 .mb-10 {
   margin-bottom: 2.5rem;
-}
-.mb-8 {
-  margin-bottom: 2rem;
 }
 .block {
   display: block;
@@ -1104,9 +1100,6 @@ select {
 }
 .h-20 {
   height: 5rem;
-}
-.h-full {
-  height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -1171,11 +1164,11 @@ select {
 .max-w-2xl {
   max-width: 42rem;
 }
-.max-w-4xl {
-  max-width: 56rem;
-}
 .max-w-3xl {
   max-width: 48rem;
+}
+.max-w-4xl {
+  max-width: 56rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1236,6 +1229,9 @@ select {
 }
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
@@ -1956,65 +1952,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.hover\:text-yellow-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(250 204 21 / var(--tw-text-opacity));
-}
-.hover\:text-green-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity));
-}
-.hover\:text-red-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-.hover\:text-blue-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-.hover\:text-blue-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(30 64 175 / var(--tw-text-opacity));
-}
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
-.hover\:text-blue-700:hover {
+.hover\:text-yellow-400:hover {
   --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
-}
-.hover\:text-red-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(153 27 27 / var(--tw-text-opacity));
-}
-.hover\:text-red-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-.hover\:text-indigo-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(79 70 229 / var(--tw-text-opacity));
-}
-.hover\:text-indigo-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(55 48 163 / var(--tw-text-opacity));
-}
-.hover\:text-yellow-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(133 77 14 / var(--tw-text-opacity));
-}
-.hover\:text-teal-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(45 212 191 / var(--tw-text-opacity));
-}
-.hover\:text-teal-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(17 94 89 / var(--tw-text-opacity));
-}
-.hover\:text-teal-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(13 148 136 / var(--tw-text-opacity));
+  color: rgb(250 204 21 / var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
   z-index: 10;
@@ -2399,6 +2343,10 @@ select {
 
   .md\:grid {
     display: grid;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:w-1\/2 {

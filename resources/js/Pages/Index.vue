@@ -10,7 +10,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-8 px-5 pt-16 text-center md:text-left">
                     <!-- Highest K/D  -->
-                    <Link :href="'/player/' + data.leaderboard.highestKD.username">
+                    <Link :href="'/player/' + data.leaderboard.highestKD.username" class="overflow-hidden">
                         <div style="background-color: #2f3136">
                             <div class="bg-green-500 text-green-900 p-3 hover:text-blue-600">
                                 <span class="text-xl"><i class="fad fa-skull-crossbones"></i> Highest K/D</span>
@@ -23,7 +23,7 @@
                     </Link>
 
                     <!-- Most Wins -->
-                    <Link :href="'/player/' + data.leaderboard.mostWins.username">
+                    <Link :href="'/player/' + data.leaderboard.mostWins.username" class="overflow-hidden">
                         <div style="background-color: #2f3136">
                             <div class="bg-blue-500 text-blue-900 p-3 hover:text-yellow-400">
                                 <span class="text-xl"><i class="fad fa-trophy"></i> Most Wins</span>
@@ -36,7 +36,7 @@
                     </Link>
 
                     <!-- Highest Winrate -->
-                    <Link :href="'/player/' + data.leaderboard.highestWinrate.username">
+                    <Link :href="'/player/' + data.leaderboard.highestWinrate.username" class="overflow-hidden">
                         <div style="background-color: #2f3136">
                             <div class="bg-red-500 text-red-900 p-3 hover:text-gray-200">
                                 <span class="text-xl"><i class="fas fa-percentage"></i> Highest Winrate</span>
