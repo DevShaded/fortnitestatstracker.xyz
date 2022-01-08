@@ -9,9 +9,9 @@
         <div v-else class="max-w-3xl mx-auto px-5 py-8">
             <h4 class="text-white text-xl"><i class="fad fa-newspaper"></i> Current Fortnite News</h4>
             <div v-for="item in news" :key="item.id" class="bg-light-purple rounded-md">
-                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8">
+                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 overflow-hidden">
                     <div>
-                        <img class="h-full" :src="item.image" alt="Fortnite Picture">
+                        <img class="md:h-full" :src="item.image" alt="Fortnite Picture">
                     </div>
 
                     <div class="p-2 md:p-4">
