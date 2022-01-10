@@ -7,6 +7,21 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="{{ asset('/images/favicons/browserconfig.xml') }}">
         <meta name="theme-color" content="#2a095f">
+        <meta name="description" content="Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://fortnitestatstracker.xyz">
+        <meta property="og:title" content="Find your Fortnite stats now!">
+        <meta property="og:description" content="Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day!">
+        <meta property="og:image" content="{{ asset('images/favicons/android-chrome-256x256.png') }}">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="https://fortnitestatstracker.xyz">
+        <meta name="twitter:title" content="Find your Fortnite stats now!">
+        <meta name="twitter:description" content="Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day!">
+        <meta name="twitter:image" content="{{ asset('images/favicons/android-chrome-256x256.png') }}">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
