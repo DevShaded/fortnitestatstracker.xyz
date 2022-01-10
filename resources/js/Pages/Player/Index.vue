@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>{{ data.account_information.username }} | Fortnite Stats Tracker</title>
+        <title>{{ data.account_information.username }} - Fortnite Stats Tracker</title>
         <meta name="description" :content="'Get the Fortnite stats for ' + data.account_information.username">
     </Head>
 

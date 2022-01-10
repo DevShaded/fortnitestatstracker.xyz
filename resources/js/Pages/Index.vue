@@ -1,4 +1,10 @@
 <template>
+    <Head>
+        <title>Home - Fortnite Stats Tracker</title>
+        <meta name="description" content="Welcome to the homepage of fortnitestatstracker.xyz!">
+    </Head>
+
+
     <app-layout>
         <div v-if="!data">
             <div class="max-w-2xl mx-auto bg-light-purple mt-8 p-4">
@@ -58,7 +64,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import FortniteNews from "@/Components/FortniteNews";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 import Banner from "@/Jetstream/Banner";
 
 export default {
@@ -68,7 +74,8 @@ export default {
         AppLayout,
         Link,
         FortniteNews,
-        Banner
+        Banner,
+        Head
     },
 
     props: {
