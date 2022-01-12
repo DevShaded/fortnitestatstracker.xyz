@@ -7,7 +7,7 @@
     <app-layout>
         <div class="max-w-7xl mt-10 mx-auto px-5 overflow-hidden">
             <!-- User Info -->
-            <p class="text-gray-200 text-center md:text-left">User Info</p>
+            <p class="text-gray-200 text-left text-xl">User Info</p>
             <section
                 class="flex space-x-4 justify-center items-center md:justify-start md:items-start bg-light-purple p-5 overflow-hidden rounded-t">
                 <h3 class="text-2xl md:text-4xl text-white">{{ data.account_information.username }}</h3>
@@ -15,15 +15,21 @@
             </section>
 
             <div class="flex gap-x-4 mt-6">
-                <a v-if="data.account_stats.lifetime" @click.prevent="setActive('lifetime')" :class="{ active: isActive('lifetime') }" href="#lifetime" class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a v-if="data.account_stats.lifetime" @click.prevent="setActive('lifetime')"
+                   :class="{ active: isActive('lifetime') }" href="#lifetime"
+                   class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span>LIFETIME</span>
                 </a>
 
-                <a v-if="data.account_stats.keyboard" @click.prevent="setActive('keyboard')" :class="{ active: isActive('keyboard') }" href="#keyboard" class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a v-if="data.account_stats.keyboard" @click.prevent="setActive('keyboard')"
+                   :class="{ active: isActive('keyboard') }" href="#keyboard"
+                   class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <i class="fas fa-keyboard text-2xl"></i>
                 </a>
 
-                <a v-if="data.account_stats.gamepad" @click.prevent="setActive('gamepad')" :class="{ active: isActive('gamepad') }" href="#gamepad" class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a v-if="data.account_stats.gamepad" @click.prevent="setActive('gamepad')"
+                   :class="{ active: isActive('gamepad') }" href="#gamepad"
+                   class="inline-flex items-center p-2 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <i class="fas fa-gamepad text-2xl"></i>
                 </a>
             </div>
@@ -59,210 +65,303 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <!-- Solo Lifetime Stats -->
                         <div>
-                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span class="float-right">{{ formatNumber(data.account_stats.lifetime.solo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span
+                                class="float-right">{{ formatNumber(data.account_stats.lifetime.solo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 10</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.top10, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.top10, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 25</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.top25, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.top25, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.lifetime.solo.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.lifetime.solo.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.lifetime.solo.minutesPlayed) / data.account_stats.lifetime.solo.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.lifetime.solo.minutesPlayed) / data.account_stats.lifetime.solo.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.kills / data.account_stats.lifetime.solo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.kills / data.account_stats.lifetime.solo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.minutesPlayed / data.account_stats.lifetime.solo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.minutesPlayed / data.account_stats.lifetime.solo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.score / data.account_stats.lifetime.solo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.score / data.account_stats.lifetime.solo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.score / data.account_stats.lifetime.solo.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.score / data.account_stats.lifetime.solo.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.solo.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.solo.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duo Lifetime Stats -->
                         <div>
-                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span class="float-right">{{ formatNumber(data.account_stats.lifetime.duo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span
+                                class="float-right">{{ formatNumber(data.account_stats.lifetime.duo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 5</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.top5, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.top5, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 12</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.top12, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.top12, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.lifetime.duo.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.lifetime.duo.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.lifetime.duo.minutesPlayed) / data.account_stats.lifetime.duo.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.lifetime.duo.minutesPlayed) / data.account_stats.lifetime.duo.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.kills / data.account_stats.lifetime.duo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.kills / data.account_stats.lifetime.duo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.minutesPlayed / data.account_stats.lifetime.duo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.minutesPlayed / data.account_stats.lifetime.duo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.score / data.account_stats.lifetime.duo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.score / data.account_stats.lifetime.duo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.score / data.account_stats.lifetime.duo.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.score / data.account_stats.lifetime.duo.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.duo.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.duo.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Squad Lifetime Stats -->
                         <div>
-                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span class="float-right">{{ formatNumber(data.account_stats.lifetime.squad.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span
+                                class="float-right">{{ formatNumber(data.account_stats.lifetime.squad.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 3</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.top3, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.top3, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 6</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.top6, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.top6, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.lifetime.squad.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.lifetime.squad.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.lifetime.squad.minutesPlayed) / data.account_stats.lifetime.squad.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.lifetime.squad.minutesPlayed) / data.account_stats.lifetime.squad.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.kills / data.account_stats.lifetime.squad.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.kills / data.account_stats.lifetime.squad.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.minutesPlayed / data.account_stats.lifetime.squad.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.minutesPlayed / data.account_stats.lifetime.squad.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.score / data.account_stats.lifetime.squad.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.score / data.account_stats.lifetime.squad.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.score / data.account_stats.lifetime.squad.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.score / data.account_stats.lifetime.squad.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.lifetime.squad.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.lifetime.squad.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
@@ -298,210 +397,303 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <!-- Solo Keyboard Stats -->
                         <div>
-                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span class="float-right">{{ formatNumber(data.account_stats.keyboard.solo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span
+                                class="float-right">{{ formatNumber(data.account_stats.keyboard.solo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 10</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.top10, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.top10, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 25</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.top25, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.top25, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.keyboard.solo.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.keyboard.solo.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.keyboard.solo.minutesPlayed) / data.account_stats.keyboard.solo.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.keyboard.solo.minutesPlayed) / data.account_stats.keyboard.solo.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.kills / data.account_stats.keyboard.solo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.kills / data.account_stats.keyboard.solo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.minutesPlayed / data.account_stats.keyboard.solo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.minutesPlayed / data.account_stats.keyboard.solo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.score / data.account_stats.keyboard.solo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.score / data.account_stats.keyboard.solo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.score / data.account_stats.keyboard.solo.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.score / data.account_stats.keyboard.solo.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.solo.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.solo.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duo Keyboard Stats -->
                         <div>
-                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span class="float-right">{{ formatNumber(data.account_stats.keyboard.duo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span
+                                class="float-right">{{ formatNumber(data.account_stats.keyboard.duo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 5</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.top5, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.top5, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 12</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.top12, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.top12, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.keyboard.duo.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.keyboard.duo.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.keyboard.duo.minutesPlayed) / data.account_stats.keyboard.duo.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.keyboard.duo.minutesPlayed) / data.account_stats.keyboard.duo.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.kills / data.account_stats.keyboard.duo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.kills / data.account_stats.keyboard.duo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.minutesPlayed / data.account_stats.keyboard.duo.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.minutesPlayed / data.account_stats.keyboard.duo.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.score / data.account_stats.keyboard.duo.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.score / data.account_stats.keyboard.duo.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.score / data.account_stats.keyboard.duo.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.score / data.account_stats.keyboard.duo.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.duo.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.duo.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Squad Keyboard Stats -->
                         <div>
-                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span class="float-right">{{ formatNumber(data.account_stats.keyboard.squad.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span
+                                class="float-right">{{ formatNumber(data.account_stats.keyboard.squad.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.wins, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.wins, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Win %</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.winRate, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.winRate, 2)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">K/D</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.kd, 2) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.kd, 2)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 3</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.top3, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.top3, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Top 6</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.top6, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.top6, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Time Played</span>
-                                    <span class="block text-white">{{ minutesToDHMS(data.account_stats.keyboard.squad.minutesPlayed) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS(data.account_stats.keyboard.squad.minutesPlayed)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Avg. Match Time</span>
-                                    <span class="block text-white">{{ minutesToDHMS((data.account_stats.keyboard.squad.minutesPlayed) / data.account_stats.keyboard.squad.matches) }}</span>
+                                    <span class="block text-white">{{
+                                            minutesToDHMS((data.account_stats.keyboard.squad.minutesPlayed) / data.account_stats.keyboard.squad.matches)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.kills / data.account_stats.keyboard.squad.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.kills / data.account_stats.keyboard.squad.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Kills/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.minutesPlayed / data.account_stats.keyboard.squad.kills, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.minutesPlayed / data.account_stats.keyboard.squad.kills, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Match</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.score / data.account_stats.keyboard.squad.matches, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.score / data.account_stats.keyboard.squad.matches, 0)
+                                        }}</span>
                                 </div>
                                 <div>
                                     <span class="block text-xl text-gray-400">Score/Min</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.score / data.account_stats.keyboard.squad.minutesPlayed, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.score / data.account_stats.keyboard.squad.minutesPlayed, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Score</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.score, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.score, 0)
+                                        }}</span>
                                 </div>
 
                                 <div>
                                     <span class="block text-xl text-gray-400">Deaths</span>
-                                    <span class="block text-white">{{ formatNumber(data.account_stats.keyboard.squad.deaths, 0) }}</span>
+                                    <span class="block text-white">{{
+                                            formatNumber(data.account_stats.keyboard.squad.deaths, 0)
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
@@ -511,7 +703,8 @@
                 <!-- Gamepad Stats -->
                 <div v-if="isActive('gamepad')" id="gamepad">
                     <h3 class="bg-yellow-500 text-yellow-900 font-bold p-2">Overall<span class="float-right">{{ formatNumber(data.account_stats.gamepad.overall.matches, 0) }} Matches</span></h3>
-                    <div class="bg-light-purple grid grid-cols-2 md:grid-cols-4 gap-4 justify-between p-6 text-center shadow-md rounded-b mb-10">
+                    <div
+                        class="bg-light-purple grid grid-cols-2 md:grid-cols-4 gap-4 justify-between p-6 text-center shadow-md rounded-b mb-10">
                         <div>
                             <span class="block text-4xl text-gray-400">Wins <i class="fad fa-trophy text-yellow-500"></i></span>
                             <span class="block text-xl text-white">{{ formatNumber(data.account_stats.gamepad.overall.wins, 0) }}</span>
@@ -537,8 +730,10 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <!-- Solo Gamepad Stats -->
                         <div>
-                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span class="float-right">{{ formatNumber(data.account_stats.gamepad.solo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-green-500 text-green-900 font-bold p-2">Solo<span class="float-right">{{ formatNumber(data.account_stats.gamepad.solo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
                                     <span class="block text-white">{{ formatNumber(data.account_stats.gamepad.solo.wins, 0) }}</span>
@@ -607,8 +802,10 @@
 
                         <!-- Duo Gamepad Stats -->
                         <div>
-                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span class="float-right">{{ formatNumber(data.account_stats.gamepad.duo.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-blue-500 text-blue-900 font-bold p-2">Duo<span class="float-right">{{ formatNumber(data.account_stats.gamepad.duo.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
                                     <span class="block text-white">{{ formatNumber(data.account_stats.gamepad.duo.wins, 0) }}</span>
@@ -677,8 +874,11 @@
 
                         <!-- Squad Gamepad Stats -->
                         <div>
-                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span class="float-right">{{ formatNumber(data.account_stats.gamepad.squad.matches, 0) }} Matches</span></h3>
-                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b" style="background-color: #2f3136">
+                            <h3 class="bg-red-500 text-red-900 font-bold p-2">Squad<span
+                                class="float-right">{{ formatNumber(data.account_stats.gamepad.squad.matches, 0) }} Matches</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2 justify-between p-6 shadow-md rounded-b"
+                                 style="background-color: #2f3136">
                                 <div>
                                     <span class="block text-xl text-gray-400">Wins</span>
                                     <span class="block text-white">{{ formatNumber(data.account_stats.gamepad.squad.wins, 0) }}</span>
@@ -754,6 +954,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import { Head } from "@inertiajs/inertia-vue3";
+import moment from "moment";
 
 export default {
     name: 'Index',
@@ -761,6 +962,7 @@ export default {
     data() {
         return {
             activeItem: 'lifetime',
+            countdown:  '',
         }
     },
 
@@ -774,32 +976,19 @@ export default {
     },
 
     methods: {
+        updatePlayer() {
+            let timestamp = this.data.account_information.updated_at;
+            timestamp = moment(timestamp).add('5', 'minutes')
 
-        // addHours() {
-        //     let timestamp = this.data.account_information.updated_at;
-        //     timestamp = moment(timestamp).add('2', 'minutes')
-        //
-        //     let interval = 3000
-        //
-        //     setInterval(() => {
-        //         let timeDifference = moment(timestamp) - moment()
-        //         let minutes = moment(timeDifference).format('mm')
-        //         let seconds = moment(timeDifference).format('ss')
-        //
-        //         if (minutes < 1) {
-        //             this.countdown = `Updating in: ${seconds}s`
-        //         } else if (minutes > 0 && minutes < 10) {
-        //             this.countdown = `Updating in: ${minutes}m ${seconds}s`
-        //         }
-        //
-        //         if (moment().isAfter(timestamp)) {
-        //             axios.post('/api/player/update', { 'username': this.data.account_information.username })
-        //                 .then(res => {
-        //                     window.location.reload()
-        //                 })
-        //         }
-        //     }, interval)
-        // },
+            if (moment().isAfter(timestamp)) {
+                axios.post('/player/update', {
+                    'username': this.data.account_information.username
+                })
+                .then(res => {
+                    window.location.reload()
+                })
+            }
+        },
 
         minutesToDHMS(minutes) {
             let seconds = Number(minutes * 60)
@@ -825,14 +1014,18 @@ export default {
             }
         },
 
-        isActive (menuItem) {
+        isActive(menuItem) {
             return this.activeItem === menuItem
         },
 
-        setActive (menuItem) {
+        setActive(menuItem) {
             this.activeItem = menuItem
-        }
+        },
     },
+
+    created() {
+        this.updatePlayer()
+    }
 }
 </script>
 
