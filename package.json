@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@headlessui/vue": "^1.4.2",
-        "@heroicons/vue": "^1.0.5"
+        "@heroicons/vue": "^1.0.5",
+        "moment": "^2.29.1"
     }
 }
