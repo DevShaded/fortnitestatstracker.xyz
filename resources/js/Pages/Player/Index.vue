@@ -987,6 +987,9 @@ export default {
                 .then(res => {
                     window.location.reload()
                 })
+                .catch(reason => {
+                    console.error('Could not update player')
+                })
             }
         },
 
