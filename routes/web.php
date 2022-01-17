@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Fortnite\FortniteController;
+use App\Http\Controllers\Fortnite\FortniteShopController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,9 +31,11 @@ Route::get('/news', function () {
     return Inertia::render('News/Index');
 });
 
-Route::get('/shop', function () {
-    return Inertia::render('Shop/Index');
+Route::prefix('/shop')->group(function () {
+    Route::get('/', [FortniteShopController::class, 'index']);
 });
+
+Route::get('/shop', [FortniteShopController::class, 'index']);
 
 Route::prefix('/player')->group(function () {
     Route::get('/{username}', [FortniteController::class, 'player'])->name('fn-player');
