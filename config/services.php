@@ -33,7 +33,8 @@ return [
 
     'fortnite' => [
         'api' => [
-            'key' => env('FORTNITE_API_KEY')
+            'key' => env('FORTNITE_API_KEY'),
+            'key_io' => env('FORTNITE_IO_KEY'),
         ],
     ],
 ];
