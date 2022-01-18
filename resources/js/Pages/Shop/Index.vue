@@ -1,4 +1,9 @@
 <template>
+    <Head>
+        <title>Shop - Fortnite Stats Tracker</title>
+        <meta name="description" content="Welcome to the item shop of fortnitestatstracker.xyz!">
+    </Head>
+
     <app-layout>
         <div class="max-w-7xl mx-auto">
             <div class="my-10">
@@ -46,14 +51,15 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 
 export default {
     name: 'ShopIndex',
 
     components: {
         AppLayout,
-        Link
+        Link,
+        Head,
     },
 
     props: {
