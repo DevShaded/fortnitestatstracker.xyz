@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Fortnite\FortniteController;
+use App\Http\Controllers\Fortnite\FortniteCreativeController;
 use App\Http\Controllers\Fortnite\FortniteShopController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,16 @@ use Inertia\Inertia;
 
 Route::get('/', [FortniteController::class, 'index']);
 
-Route::get('/creative', function () {
-    return Inertia::render('Creative/Index');
+Route::prefix('/creative')->group(function () {
+    Route::get('/', [FortniteCreativeController::class, 'index']);
+    Route::get('/island/{code}', [FortniteCreativeController::class, 'island'])->name('ct-island');
+
+    Route::post('/search', [FortniteCreativeController::class, 'search']);
+    Route::post('/update', [FortniteCreativeController::class, 'update']);
+    Route::post('/update/feature/islands', [FortniteCreativeController::class, 'updateFeaturedIslands']);
 });
+
+
 
 Route::get('/events', function () {
     return Inertia::render('Events/Index');
