@@ -980,17 +980,21 @@ export default {
             let timestamp = this.data.account_information.updated_at;
             timestamp = moment(timestamp).add('5', 'minutes')
 
-            if (moment().isAfter(timestamp)) {
-                axios.post('/player/update', {
-                    'username': this.data.account_information.username
-                })
-                .then(res => {
-                    window.location.reload()
-                })
-                .catch(reason => {
-                    console.error('Could not update player')
-                })
-            }
+            let interval = 5000;
+
+            setInterval(() => {
+                if (moment().isAfter(timestamp)) {
+                    axios.post('/player/update', {
+                        'username': this.data.account_information.username
+                    })
+                        .then(res => {
+                            window.location.reload()
+                        })
+                        .catch(reason => {
+                            console.error('Could not update player')
+                        })
+                }
+            }, interval)
         },
 
         minutesToDHMS(minutes) {
@@ -1026,7 +1030,7 @@ export default {
         },
     },
 
-    created() {
+    mounted() {
         this.updatePlayer()
     }
 }
