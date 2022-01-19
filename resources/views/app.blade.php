@@ -57,6 +57,6 @@
         @endif
     </head>
     <body class="font-fortnite antialiased">
-        @inetia
+        @inertia
     </body>
 </html>
