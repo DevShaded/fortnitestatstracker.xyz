@@ -44,17 +44,19 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://kit.fontawesome.com/566002e451.js" crossorigin="anonymous"></script>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J0WXGSPS89"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        @if(config('app.env') === 'production')
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-J0WXGSPS89"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
 
-            gtag('config', 'G-J0WXGSPS89');
-        </script>
+                    gtag('config', 'G-J0WXGSPS89');
+                </script>
+        @endif
     </head>
     <body class="font-fortnite antialiased">
-        @inertia
+        @inetia
     </body>
 </html>
