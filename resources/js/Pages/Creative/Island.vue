@@ -1,6 +1,10 @@
 <template>
-    <app-layout>
+    <Head>
+        <title>{{ data.island.island_name }} - Fortnite Stats Tracker</title>
+        <meta name="description" content="Welcome to the Creative Island's page of fortnitestatstracker.xyz!">
+    </Head>
 
+    <app-layout>
         <CreativeSearch />
 
         <div class="max-w-4xl mx-auto px-5 py-8">
@@ -27,6 +31,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import CreativeSearch from "@/Components/CreativeSearch";
 import moment from "moment";
+import { Head } from "@inertiajs/inertia-vue3";
 
 export default {
     name: 'Island',
@@ -43,6 +48,7 @@ export default {
 
     components: {
         AppLayout,
+        Head,
         CreativeSearch
     },
 

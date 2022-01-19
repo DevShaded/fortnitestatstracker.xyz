@@ -1,4 +1,9 @@
 <template>
+    <Head>
+        <title>Creative - Fortnite Stats Tracker</title>
+        <meta name="description" content="Welcome to the Creative Island's page of fortnitestatstracker.xyz!">
+    </Head>
+
     <app-layout>
         <div class="row-auto">
             <CreativeSearch />
@@ -29,7 +34,7 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 import moment from "moment";
 import CreativeSearch from "@/Components/CreativeSearch";
 
@@ -45,6 +50,7 @@ export default {
     components: {
         AppLayout,
         Link,
+        Head,
         CreativeSearch
     },
 
