@@ -51,3 +51,12 @@ Route::prefix('/player')->group(function () {
     Route::post('/search', [FortniteController::class, 'search']);
     Route::post('/update', [FortniteController::class, 'update']);
 });
+
+
+Route::get('login', function () {
+    return redirect('/');
+})->name('login');
+
+Route::get('register', function () {
+    return redirect('/');
+})->name('register');
