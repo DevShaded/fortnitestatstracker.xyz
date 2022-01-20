@@ -43,14 +43,16 @@
         </Disclosure>
 
         <!-- Form -->
-        <header class="max-w-2xl pt-20 mx-5 md:mx-auto overflow-hidden">
-            <h1 class="text-4xl text-white text-center mb-3">FIND YOUR FORTNITE STATS NOW!</h1>
-            <form @submit.prevent="submit" class="md:flex shadow-xl">
-                <label for="username" class="sr-only">Username</label>
-                <input v-model="form.username" type="text" autocomplete="off" name="username" id="username" required class="shadow-sm p-3 md:p-5 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 font-sans" placeholder="EPIC username goes here!" />
-                <button class="w-full p-2 md:w-1/2 bg-white hover:bg-yellow-400">Search</button>
-            </form>
-            <span class="text-xl text-red-400" v-if="$page.props.errors">{{ $page.props.errors[0] }}</span>
+        <header class="bg-center bg-no-repeat bg- py-[100px]" style="background-image: url('/images/fortnite/backgrounds/wallpaper.webp');">
+            <div class="max-w-2xl pt-20 mx-5 md:mx-auto overflow-hidden">
+                <h1 class="text-4xl text-white text-center mb-3">FIND YOUR FORTNITE STATS NOW!</h1>
+                <form @submit.prevent="submit" class="md:flex shadow-xl">
+                    <label for="username" class="sr-only">Username</label>
+                    <input v-model="form.username" type="search" autocomplete="off" name="username" id="username" required class="shadow-sm p-3 md:p-5 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 font-sans" placeholder="EPIC username goes here!" />
+                    <button class="w-full p-2 md:w-1/2 bg-white hover:bg-yellow-400">Search</button>
+                </form>
+                <span class="text-xl text-red-400" v-if="$page.props.errors">{{ $page.props.errors[0] }}</span>
+            </div>
         </header>
 
         <!-- Main Section -->
