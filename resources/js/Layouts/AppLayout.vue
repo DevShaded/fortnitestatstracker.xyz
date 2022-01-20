@@ -51,7 +51,9 @@
                     <input v-model="form.username" type="search" autocomplete="off" name="username" id="username" required class="shadow-sm p-3 md:p-5 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 font-sans" placeholder="EPIC username goes here!" />
                     <button class="w-full p-2 md:w-1/2 bg-white hover:bg-yellow-400">Search</button>
                 </form>
-                <span class="text-xl text-red-400" v-if="$page.props.errors">{{ $page.props.errors[0] }}</span>
+                <div v-if="$page.props.errors">
+                    <span class="text-xl text-white">{{ $page.props.errors[0] }}</span>
+                </div>
             </div>
         </header>
 
