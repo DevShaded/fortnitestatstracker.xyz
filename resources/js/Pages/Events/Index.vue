@@ -1,4 +1,9 @@
 <template>
+    <Head>
+        <title>Events & Tournaments - Fortnite Stats Tracker</title>
+        <meta name="description" content="Welcome to the item shop of fortnitestatstracker.xyz!">
+    </Head>
+
     <app-layout>
         <div class="max-w-7xl mx-auto px-5 my-5">
             <div class="max-w-2xl bg-light-purple mx-auto my-10 py-10 rounded-md shadow">
