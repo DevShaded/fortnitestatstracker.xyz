@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Fortnite\FortniteController;
 use App\Http\Controllers\Fortnite\FortniteCreativeController;
+use App\Http\Controllers\Fortnite\FortniteEventController;
 use App\Http\Controllers\Fortnite\FortniteShopController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,10 @@ Route::prefix('/creative')->group(function () {
     Route::post('/search', [FortniteCreativeController::class, 'search']);
     Route::post('/update', [FortniteCreativeController::class, 'update']);
     Route::post('/update/feature/islands', [FortniteCreativeController::class, 'updateFeaturedIslands']);
+});
+
+Route::prefix('/events')->group(function () {
+    Route::get('/{region?}', [FortniteEventController::class, 'index']);
 });
 
 
