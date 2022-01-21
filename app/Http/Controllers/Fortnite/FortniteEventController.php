@@ -19,7 +19,7 @@ class FortniteEventController extends Controller
 
         $fortniteEvent = FortniteEvent::where('event_region', $region)->get();
 
-        if ($fortniteEvent == null) {
+        if ($fortniteEvent->isEmpty()) {
             switch ($region) {
                 case 'EU':
                     $this->storeEUEventInDB();
