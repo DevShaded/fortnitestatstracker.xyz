@@ -1,7 +1,21 @@
 <template>
     <Head>
         <title>Creative - Fortnite Stats Tracker</title>
-        <meta name="description" content="Welcome to the Creative Island's page of fortnitestatstracker.xyz!">
+        <meta name="description" content="Looking for current for the featured Creative Island's, or just wanna search up a specific island? You have come to the right place!">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://fortnitestatstracker.xyz/creative">
+        <meta property="og:title" content="Fortnite Creative Island's">
+        <meta property="og:description" content="Looking for the current featured Creative Island's, or just wanna search up a specific island? You have come to the right place!">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="https://fortnitestatstracker.xyz/creative">
+        <meta name="twitter:title" content="Fortnite Creative Island's">
+        <meta name="twitter:description" content="Looking for current for the featured Creative Island's, or just wanna search up a specific island? You have come to the right place!">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
     </Head>
 
     <app-layout>
@@ -33,10 +47,11 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import moment from "moment";
-import CreativeSearch from "@/Components/CreativeSearch";
+import CreativeSearch from "../../Components/CreativeSearch";
+import axios from "axios";
 
 export default {
     name: 'CreativeIndex',

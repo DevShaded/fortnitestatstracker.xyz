@@ -85,8 +85,8 @@ import { reactive } from "vue";
 import { Inertia } from '@inertiajs/inertia'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-import NavLink from "@/Jetstream/NavLink";
-import ResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
+import NavLink from "../Jetstream/NavLink";
+import ResponsiveNavLink from "../Jetstream/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-vue3";
 
 const navigation = {

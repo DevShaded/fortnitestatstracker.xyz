@@ -2,6 +2,20 @@
     <Head>
         <title>{{ data.island.island_name }} - Fortnite Stats Tracker</title>
         <meta name="description" content="Welcome to the Creative Island's page of fortnitestatstracker.xyz!">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" :content="'https://fortnitestatstracker.xyz/creative/island/' + data.island.island_code">
+        <meta property="og:title" :content="data.island.island_name + ' - Fortnite Stats Tracker'">
+        <meta property="og:description" :content="'View the Fortnite Creative Island that was made by ' + data.island.island_creator">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" :content="'https://fortnitestatstracker.xyz/creative/island/' + data.island.island_code">
+        <meta name="twitter:title" :content="data.island.island_name + ' - Fortnite Stats Tracker'">
+        <meta name="twitter:description" :content="'View the Fortnite Creative Island that was made by ' + data.island.island_creator">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
     </Head>
 
     <app-layout>
@@ -28,8 +42,8 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import CreativeSearch from "@/Components/CreativeSearch";
+import AppLayout from "../../Layouts/AppLayout";
+import CreativeSearch from "../../Components/CreativeSearch";
 import moment from "moment";
 import { Head } from "@inertiajs/inertia-vue3";
 

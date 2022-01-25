@@ -1,7 +1,21 @@
 <template>
     <Head>
         <title>Events & Tournaments - Fortnite Stats Tracker</title>
-        <meta name="description" content="Welcome to the item shop of fortnitestatstracker.xyz!">
+        <meta name="description" content="Looking for current Events or Tournaments in you're region on Fortnite? You have come to the right place!">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://fortnitestatstracker.xyz/events">
+        <meta property="og:title" content="Fortnite Events & Tournaments">
+        <meta property="og:description" content="Looking for current Events or Tournaments in you're region on Fortnite? You have come to the right place!">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="https://fortnitestatstracker.xyz/events">
+        <meta name="twitter:title" content="Fortnite Events & Tournaments">
+        <meta name="twitter:description" content="Looking for current Events or Tournaments in you're region on Fortnite? You have come to the right place!">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
     </Head>
 
     <app-layout>
@@ -51,15 +65,16 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import { Link } from "@inertiajs/inertia-vue3";
+import AppLayout from "../../Layouts/AppLayout";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 
 export default {
     name: 'EventsIndex',
 
     components: {
         AppLayout,
-        Link
+        Link,
+        Head
     },
 
     props: {

@@ -2,32 +2,36 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
+        "development": "mix && mix --mix-config=webpack.ssr.mix.js",
+        "watch": "mix watch && mix --mix-config=webpack.ssr.mix.js",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production && mix --production --mix-config=webpack.ssr.mix.js"
     },
     "devDependencies": {
-        "@inertiajs/inertia": "^0.10.0",
-        "@inertiajs/inertia-vue3": "^0.5.1",
-        "@inertiajs/progress": "^0.2.6",
-        "@tailwindcss/forms": "^0.4.0",
-        "@tailwindcss/typography": "^0.5.0",
-        "@vue/compiler-sfc": "^3.0.5",
+        "autoprefixer": "^10.4.2",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "postcss-import": "^14.0.2",
-        "tailwindcss": "^3.0.0",
-        "vue": "^3.0.5",
-        "vue-loader": "^16.1.2"
+        "postcss": "^8.4.5",
+        "tailwindcss": "^3.0.15",
+        "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "@headlessui/vue": "^1.4.2",
+        "@headlessui/vue": "^1.4.3",
         "@heroicons/vue": "^1.0.5",
-        "moment": "^2.29.1"
+        "@inertiajs/inertia": "^0.11.0",
+        "@inertiajs/inertia-vue3": "^0.6.0",
+        "@inertiajs/progress": "^0.2.7",
+        "@inertiajs/server": "^0.1.0",
+        "@tailwindcss/forms": "^0.4.0",
+        "@tailwindcss/typography": "^0.5.0",
+        "@vue/compiler-sfc": "^3.2.29",
+        "@vue/server-renderer": "^3.2.29",
+        "moment": "^2.29.1",
+        "postcss-import": "^14.0.2",
+        "vue": "^3.2.29",
+        "webpack-node-externals": "^3.0.0"
     }
 }
