@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: 'FortniteNews',
 
@@ -34,8 +36,8 @@ export default {
         }
     },
 
-    created() {
-        axios.get('api/fortnite/news/br')
+    async mounted() {
+        await axios.get('api/fortnite/news/br')
             .then(res => {
                 this.news = res.data.data.motds
             })

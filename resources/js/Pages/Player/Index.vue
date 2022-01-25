@@ -2,6 +2,20 @@
     <Head>
         <title>{{ data.account_information.username }} - Fortnite Stats Tracker</title>
         <meta name="description" :content="'Get the Fortnite stats for ' + data.account_information.username">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" :content="'https://fortnitestatstracker.xyz/player/' + data.account_information.username">
+        <meta property="og:title" :content="data.account_information.username + ' - Fortnite Stats Tracker'">
+        <meta property="og:description" :content="'Get the Fortnite stats for ' + data.account_information.username">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" :content="'https://fortnitestatstracker.xyz/player/' + data.account_information.username">
+        <meta name="twitter:title" :content="data.account_information.username + ' - Fortnite Stats Tracker'">
+        <meta name="twitter:description" :content="'Get the in game Fortnite stats for ' + data.account_information.username + ' now!'">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
     </Head>
 
     <app-layout>
@@ -952,9 +966,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout";
 import { Head } from "@inertiajs/inertia-vue3";
 import moment from "moment";
+import axios from "axios";
 
 export default {
     name: 'Index',

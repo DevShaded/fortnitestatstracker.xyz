@@ -2,6 +2,20 @@
     <Head>
         <title>Shop - Fortnite Stats Tracker</title>
         <meta name="description" content="Welcome to the item shop of fortnitestatstracker.xyz!">
+
+        <meta property="og:site_name" content="Fortnite Stats Tracker">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://fortnitestatstracker.xyz/shop">
+        <meta property="og:description" content="Looking for the current item shop on Fortnite? Well, you have come to the right place! We deliver daily, featured, and special featured items">
+        <meta property="og:title" content="Find your Fortnite stats now!">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+
+        <meta name="twitter:domain" content="fortnitestatstracker.xyz">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="https://fortnitestatstracker.xyz/shop">
+        <meta name="twitter:title" content="Find your Fortnite stats now!">
+        <meta name="twitter:description" content="Looking for the current item shop on Fortnite? Well, you have come to the right place! We deliver daily, featured, and special featured items">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
     </Head>
 
     <app-layout>
@@ -94,7 +108,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 
 export default {
