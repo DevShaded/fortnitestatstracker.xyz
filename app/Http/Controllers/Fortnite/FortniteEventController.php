@@ -13,33 +13,24 @@ use Inertia\Response;
 
 class FortniteEventController extends Controller
 {
-    public function index($region = 'EU'): Response | RedirectResponse
+    public function index(): Response | RedirectResponse
     {
-        $region = strtoupper($region);
-
-        $fortniteEvent = FortniteEvent::where('event_region', $region)->get();
+        $fortniteEvent = FortniteEvent::all();
 
         if ($fortniteEvent->isEmpty()) {
-            switch ($region) {
-                case 'EU':
-                    $this->storeEUEventInDB();
-                    return $this->index();
-                case 'NAE':
-                    $this->storeNAEEventInDB();
-                    return $this->index();
-                case 'NAW':
-                    $this->storeNAWEventInDB();
-                    return $this->index();
-                case 'ASIA':
-                    $this->storeASIAEventInDB();
-                    return $this->index();
-                default:
-                    return redirect()->to('/events')->withErrors(['Region "' . $region . '" does not exist']);
-            }
+            $this->storeFortniteEventInDB();
+            return $this->index();
         }
 
         $data = [
-            'events' => $fortniteEvent,
+            'fortniteEvent' => [
+                'region' => [
+                    'EU' => $fortniteEvent->where('event_region', 'EU'),
+                    'NAE' => $fortniteEvent->where('event_region', 'NAE'),
+                    'NAW' => $fortniteEvent->where('event_region', 'NAW'),
+                    'ASIA' => $fortniteEvent->where('event_region', 'ASIA'),
+                ]
+            ],
         ];
 
         return Inertia::render('Events/Index', [
@@ -62,17 +53,25 @@ class FortniteEventController extends Controller
 
     }
 
-    private function storeEUEventInDB()
+    private function storeFortniteEventInDB()
+    {
+        $this->storeFortniteEUEventInDB();
+        $this->storeFortniteNAEEventInDB();
+        $this->storeFortniteNAWEventInDB();
+        $this->storeFortniteASIAEventInDB();
+    }
+
+    private function storeFortniteEUEventInDB()
     {
         $client = new Client();
 
-        $response = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
         ]);
 
-        $data = json_decode($response->getBody(), true);
+        $data = json_decode($responseEU->getBody(), true);
 
         if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
@@ -108,17 +107,17 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeNAEEventInDB()
+    private function storeFortniteNAEEventInDB()
     {
         $client = new Client();
 
-        $response = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAE', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAE', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
         ]);
 
-        $data = json_decode($response->getBody(), true);
+        $data = json_decode($responseEU->getBody(), true);
 
         if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
@@ -154,17 +153,17 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeNAWEventInDB()
+    private function storeFortniteNAWEventInDB()
     {
         $client = new Client();
 
-        $response = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAW', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAW', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
         ]);
 
-        $data = json_decode($response->getBody(), true);
+        $data = json_decode($responseEU->getBody(), true);
 
         if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
@@ -200,17 +199,17 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeAsiaEventInDB()
+    private function storeFortniteASIAEventInDB()
     {
         $client = new Client();
 
-        $response = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=ASIA', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=ASIA', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
         ]);
 
-        $data = json_decode($response->getBody(), true);
+        $data = json_decode($responseEU->getBody(), true);
 
         if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
