@@ -38,6 +38,10 @@
 
                     gtag('config', 'G-J0WXGSPS89');
                 </script>
+
+                <!-- Google AdSense -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7348431632024620"
+                        crossorigin="anonymous"></script>
         @endif
         @inertiaHead
     </head>
