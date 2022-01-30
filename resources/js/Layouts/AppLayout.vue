@@ -2,28 +2,26 @@
     <div class="min-h-screen bg-dark-purple">
 
         <!-- Navbar -->
-        <Disclosure as="nav" class="bg-dark-purple shadow-xl" v-slot="{ open }">
+        <Disclosure as="nav" class="bg-dark-purple shadow" v-slot="{ open }">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
                             <Link href="/">
                                 <img class="block lg:hidden h-12 w-auto rounded-md" src="/images/logo.jpg" alt="Fortnite_Logo" />
                                 <img class="hidden lg:block h-12 w-auto rounded-md" src="/images/logo.jpg" alt="Fortnite_Logo" />
                             </Link>
                         </div>
-                        <div class="hidden sm:block sm:ml-6">
-                            <div class="flex space-x-4">
-                                <nav-link href="/shop" :active="$page.url === '/shop'">Shop</nav-link>
-                                <nav-link href="/news" :active="$page.url === '/news'">News</nav-link>
-                                <nav-link href="/events" :active="$page.url === '/events'">Events</nav-link>
-                                <nav-link href="/creative" :active="$page.url === '/creative'">Creative</nav-link>
-                            </div>
+                        <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
+                            <nav-link href="/shop" :active="$page.url === '/shop'">Shop</nav-link>
+                            <nav-link href="/news" :active="$page.url === '/news'">News</nav-link>
+                            <nav-link href="/events" :active="$page.url === '/events'">Events</nav-link>
+                            <nav-link href="/creative" :active="$page.url === '/creative'">Creative</nav-link>
                         </div>
                     </div>
-                    <div class="-mr-2 flex sm:hidden">
+                    <div class="-mr-2 flex items-center sm:hidden">
                         <!-- Mobile menu button -->
-                        <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-light-purple focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                             <span class="sr-only">Open main menu</span>
                             <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
                             <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
@@ -33,12 +31,12 @@
             </div>
 
             <DisclosurePanel class="sm:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1">
+                <div class="pt-2 pb-3 space-y-1">
+                    <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
                     <responsive-nav-link as="a" href="/shop" :active="$page.url === '/shop'"><i class="fad fa-shopping-cart"></i> Shop</responsive-nav-link>
                     <responsive-nav-link as="a" href="/news" :active="$page.url === '/news'"><i class="fad fa-newspaper text-light-pruple"></i> News</responsive-nav-link>
                     <responsive-nav-link as="a" href="/events" :active="$page.url === '/events'"><i class="fad fa-calendar-week"></i> Events</responsive-nav-link>
-                    <responsive-nav-link as="a" href="/creative" :active="$page.url === '/creative'"><i class="fad fa-pencil-paintbrush"></i> Creative</responsive-nav-link>
-                </div>
+                    <responsive-nav-link as="a" href="/creative" :active="$page.url === '/creative'"><i class="fad fa-pencil-paintbrush"></i> Creative</responsive-nav-link>                </div>
             </DisclosurePanel>
         </Disclosure>
 
