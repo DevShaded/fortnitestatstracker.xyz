@@ -15,10 +15,15 @@ class CosmeticItem extends Model
         'cosmetic_id',
         'name',
         'description',
+        'cosmetic_type',
         'rarity',
         'price',
         'image',
         'release_date',
-        'interest'
+        'interest',
+        'set',
+        'intro_chapter',
+        'intro_season',
+        'intro_text',
     ];
 }

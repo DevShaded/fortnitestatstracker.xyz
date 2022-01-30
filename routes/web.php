@@ -46,6 +46,9 @@ Route::get('/news', function () {
 
 Route::prefix('/shop')->group(function () {
     Route::get('/', [FortniteShopController::class, 'index']);
+    Route::get('/cosmetic/{cosmeticID}', [FortniteShopController::class, 'cosmetic']);
+
+    Route::post('/cosmetic/update', [FortniteShopController::class, 'update']);
 });
 
 Route::get('/shop', [FortniteShopController::class, 'index']);
