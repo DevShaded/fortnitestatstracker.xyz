@@ -13,11 +13,16 @@ class CreateCosmeticItemsTable extends Migration
             $table->string('cosmetic_id')->index();
             $table->string('name');
             $table->string('description');
+            $table->string('cosmetic_type');
             $table->string('rarity');
             $table->string('price');
             $table->string('image');
             $table->string('release_date');
-            $table->float('interest');
+            $table->double('interest');
+            $table->string('set')->nullable();
+            $table->string('intro_chapter');
+            $table->string('intro_season');
+            $table->string('intro_text');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
