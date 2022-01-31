@@ -4,7 +4,7 @@
             <h3 class="text-2xl text-white">SEARCH WITH ISLAND CODE</h3>
             <div class="mt-1">
                 <form @submit.prevent="submit">
-                    <input type="search" name="code" id="code" v-model="form.code" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm font-sans border-gray-300 rounded-md" placeholder="1787-6243-5207" maxlength="14" required />
+                    <input type="search" name="code" id="code" v-model="form.code" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm font-sans border-gray-300 rounded-md" placeholder="1787-6243-5207" maxlength="14" pattern="^\d{4}-\d{4}-\d{4}$" required />
                 </form>
             </div>
         </div>
