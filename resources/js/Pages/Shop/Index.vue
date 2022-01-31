@@ -35,7 +35,9 @@
                                         </div>
                                     </div>
 
-                                    <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
+                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                     <div>
                                         <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
@@ -53,7 +55,9 @@
                                     </div>
                                 </div>
 
-                                <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
+                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                 <div>
                                     <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
@@ -78,7 +82,9 @@
                                     </div>
                                 </div>
 
-                                <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                 <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                             </div>
@@ -94,7 +100,9 @@
                                 </div>
                             </div>
 
-                            <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                            <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                            <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                             <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                         </div>
@@ -117,7 +125,9 @@
                                         </div>
                                     </div>
 
-                                    <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                     <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                                 </div>
@@ -133,7 +143,9 @@
                                     </div>
                                 </div>
 
-                                <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                 <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                             </div>
@@ -157,7 +169,9 @@
                                         </div>
                                     </div>
 
-                                    <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                     <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                                 </div>
@@ -173,7 +187,9 @@
                                     </div>
                                 </div>
 
-                                <img :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full" >
+                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="" class="md:h-52 md:w-full">
+
+                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="" class="md:h-52 md:w-full">
 
                                 <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
                             </div>
