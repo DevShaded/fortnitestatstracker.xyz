@@ -27,7 +27,7 @@
                 <div v-for="island in data['featuredIsland']" :key="island.id" class="bg-light-purple rounded-md">
                     <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 overflow-hidden">
                         <div>
-                            <img class="md:h-full" :src="island.island_image" alt="Fortnite Picture">
+                            <img :src="island.island_image" alt="Fortnite Picture">
                         </div>
 
                         <div class="p-2 md:p-4">
