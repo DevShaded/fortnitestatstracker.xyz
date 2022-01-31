@@ -11,7 +11,7 @@
             <div v-for="item in news" :key="item.id" class="bg-light-purple rounded-md">
                 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 overflow-hidden">
                     <div>
-                        <img class="md:h-full" :src="item.image" alt="Fortnite Picture">
+                        <img :src="item.image" alt="Fortnite Picture">
                     </div>
 
                     <div class="p-2 md:p-4">
