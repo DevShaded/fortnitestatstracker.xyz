@@ -3,6 +3,7 @@
 use App\Http\Controllers\Fortnite\FortniteController;
 use App\Http\Controllers\Fortnite\FortniteCreativeController;
 use App\Http\Controllers\Fortnite\FortniteEventController;
+use App\Http\Controllers\Fortnite\FortniteNewsController;
 use App\Http\Controllers\Fortnite\FortniteShopController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -40,9 +41,7 @@ Route::get('/events', function () {
     return Inertia::render('Events/Index');
 });
 
-Route::get('/news', function () {
-    return Inertia::render('News/Index');
-});
+Route::get('/news', [FortniteNewsController::class, 'news']);
 
 Route::prefix('/shop')->group(function () {
     Route::get('/', [FortniteShopController::class, 'index']);
