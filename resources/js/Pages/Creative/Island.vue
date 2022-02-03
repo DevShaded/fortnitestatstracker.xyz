@@ -24,9 +24,9 @@
         <div class="max-w-4xl mx-auto px-5 py-8">
             <h4 class="text-white text-2xl"><i class="fad fa-island-tropical text-yellow-400"></i> {{ data.island.island_creator }}'s Creative Islands | <span class="text-yellow-400">{{ countdown }}</span></h4>
             <div class="bg-light-purple rounded-md">
-                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8 overflow-hidden">
+                <div class="grid gap-4 grid-cols-1 lg:grid-cols-2 mb-8 overflow-hidden">
                     <div>
-                        <img class="md:h-full" :src="data.island.island_image" alt="Creative Island Picture">
+                        <img class="w-full" :src="data.island.island_image" alt="Creative Island Picture">
                     </div>
 
                     <div class="p-2 md:p-4">
