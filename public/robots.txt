@@ -1,2 +1,47 @@
 User-agent: *
+Allow: /
+
+User-agent: AdsBot-Google
 Disallow:
+
+User-Agent: Baiduspider
+Disallow: /
+
+User-Agent: CazoodleBot
+Disallow: /
+
+User-Agent: Fasterfox
+Disallow: /
+
+User-agent: teracent-feed-processing
+Disallow: /
+
+User-Agent: Ingrid
+Crawl-delay: 20
+
+User-Agent: Jyxobot
+Disallow: /
+
+User-Agent: MJ12bot
+Disallow: /
+
+User-Agent: ShopWiki
+Disallow: /
+
+User-Agent: msnbot
+Crawl-Delay: 20
+
+User-Agent: SemrushBot
+Crawl-delay: 30
+
+User-Agent: Slurp
+Crawl-delay: 20
+
+User-Agent: Yahoo! Slurp
+Crawl-delay: 20
+
+User-agent: rogerbot
+Crawl-delay: 2
+
+User-Agent: dotbot
+Crawl-delay: 30
