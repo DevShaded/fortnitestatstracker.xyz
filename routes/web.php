@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\Fortnite\FortniteController;
-use App\Http\Controllers\Fortnite\FortniteCreativeController;
-use App\Http\Controllers\Fortnite\FortniteEventController;
-use App\Http\Controllers\Fortnite\FortniteNewsController;
-use App\Http\Controllers\Fortnite\FortniteShopController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\Fortnite\{FortniteController,
+    FortniteCreativeController,
+    FortniteEventController,
+    FortniteNewsController,
+    FortniteShopController};
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +29,7 @@ Route::prefix('/creative')->group(function () {
     Route::post('/update/feature/islands', [FortniteCreativeController::class, 'updateFeaturedIslands']);
 });
 
-Route::prefix('/events')->group(function () {
-    Route::get('/{region?}', [FortniteEventController::class, 'index']);
-});
-
-
-
-Route::get('/events', function () {
-    return Inertia::render('Events/Index');
-});
+Route::get('/events', [FortniteEventController::class, 'index']);
 
 Route::get('/news', [FortniteNewsController::class, 'news']);
 
@@ -50,15 +40,12 @@ Route::prefix('/shop')->group(function () {
     Route::post('/cosmetic/update', [FortniteShopController::class, 'update']);
 });
 
-Route::get('/shop', [FortniteShopController::class, 'index']);
-
 Route::prefix('/player')->group(function () {
     Route::get('/{username}', [FortniteController::class, 'player'])->name('fn-player');
 
     Route::post('/search', [FortniteController::class, 'search']);
     Route::post('/update', [FortniteController::class, 'update']);
 });
-
 
 Route::get('login', function () {
     return redirect('/');
