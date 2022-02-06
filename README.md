@@ -1,4 +1,4 @@
-<p align="center"><a href="https://fortnitestatstracker.xyz" target="_blank"><img src="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png" width="256"></a></p>
+<p align="center"><a href="https://fortnitestatstracker.xyz" target="_blank"><img src="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png" width="256" alt="fortnitestatstracker.xyz_logo"></a></p>
 
 # Fortnite Stats Tracker
 
