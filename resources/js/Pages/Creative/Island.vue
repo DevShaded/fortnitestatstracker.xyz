@@ -45,6 +45,7 @@
 import AppLayout from "../../Layouts/AppLayout";
 import CreativeSearch from "../../Components/CreativeSearch";
 import moment from "moment";
+import axios from "axios";
 import { Head } from "@inertiajs/inertia-vue3";
 
 export default {
