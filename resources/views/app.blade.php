@@ -4,6 +4,7 @@
         <!-- Meta -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="keywords" content="Fortnite, Fortnite Stats Tracker, Stats Tracker, Stats, Tracker"/>
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="{{ asset('/images/favicons/browserconfig.xml') }}">
         <meta name="theme-color" content="#2a095f">
