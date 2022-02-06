@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://fortnitestatstracker.xyz" target="_blank"><img src="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png" width="256"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Fortnite Stats Tracker
 
-## About Laravel
+Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day!
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Pre Setup
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Follow these steps to get started before you download this repository.
 
-## Learning Laravel
+1. You need to install [Composer](https://getcomposer.org/)
+2. You need to install [Laravel with Composer](https://laravel.com/docs/8.x#installation-via-composer)
+3. Mysql server (Can be used with [XAMPP](https://www.apachefriends.org/index.html))
+4. You need to install [Node.js version 16.x](https://nodejs.org/en/) or higher
+5. You need to install **NPM** (Node Package Manager) witch comes with Node.js
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Branches
 
-## Laravel Sponsors
+Branches are for version control. This makes it possible to work on multiple issues/tickets at the same time. Make sure that you never work on the `main` branch.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Change your branch corresponding to your issue/ticket. Example: `git checkout v1/frontend` to switch to the branch `v1/frontend`. If the branch already exist, go to next section.
+2. If the branch does not exist yet, create a new branch by typing `git checkout -b branch_name`. Example: `git checkout -b v1/frontend`. And push the branch to the remote repository. Example: `git push origin v1/frontend`
+3. If you created a new branch, you must go back to step 1 afterwards.
 
-### Premium Partners
+**Always try to keep the branch up to date with the latest changes.**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+---
 
-## Contributing
+## Setup
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Cloning the Repository
+1. Navigate to your Programming folder and open your terminal/command prompt
+2. Clone this repository by typing: `git clone https://github.com/DevShaded/fortnitestatstracker.xyz.git`
 
-## Code of Conduct
+### Installing Dependencies
+1. Navigate to the root directory of the repository and open your terminal/command prompt
+2. Install dependencies by typing: `composer install` and then type `npm install`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Environment Setup
+1. We need to copy the .env.example file to .env that you create, and change the values to your own.
+2. For the `FORTNITE_API_KEY` variable go to [Fortnite-API.com](https://fortnite-api.com/) and get the API key form there.
+3. For the `FORTNITE_IO_KEY` variable go to [FortniteApi.io](https://fortniteapi.io/) and get the API key form there.
+4. Set up the database information in the `.env` file, and create a new database with `utf8mb4_unicode_ci` as a collation.
+5. Run `php artisan key:generate` to generate a new session key for the application.
+6. Then for the last step we need to run `php artisan migrate` to create the database tables.
 
-## Security Vulnerabilities
+### **Do not ever upload the `.env` file as it contains private credentials.**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Running the Application
+3. Compile the Javascript and CSS files by typing: `npm run dev`
+4. Since we are using [SSR with inertia.js](https://inertiajs.com/server-side-rendering) we need to run the SSR server in the background.
+    1. We can do this by typing: `node /public/js/ssr.js`
+    2. Or if you want to use [PM2](https://www.pm2.io/). You can run the SSR server by typing: `pm2 start /public/js/ssr.js --watch`
+5. Then we can run the artisan server command by typing: `php artisan serve`
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Any issues? Open a new [issue](https://github.com/DevShaded/fortnitestatstracker.xyz/issues)!
