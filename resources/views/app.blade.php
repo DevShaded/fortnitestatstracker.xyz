@@ -46,7 +46,7 @@
         @endif
         @inertiaHead
     </head>
-    <body class="font-fortnite antialiased">
+    <body class="bg-dark-purple font-fortnite antialiased">
         @inertia
     </body>
 </html>

@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-dark-purple">
+    <div class="min-h-screen">
 
         <!-- Navbar -->
         <Disclosure as="nav" class="bg-dark-purple shadow" v-slot="{ open }">
