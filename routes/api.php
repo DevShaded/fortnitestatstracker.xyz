@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Fortnite\FortniteController;
 use App\Http\Controllers\Fortnite\FortniteNewsController;
+use App\Http\Controllers\Fortnite\FortniteShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/fortnite/news/br', [FortniteNewsController::class, 'index']);
+Route::get('/fortnite/shop', [FortniteShopController::class, 'getCurrentShopWithAPI']);

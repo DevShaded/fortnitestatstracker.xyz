@@ -71,7 +71,115 @@
             </div>
         </div>
 
-        <fortnite-news></fortnite-news>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex-1 flex items-stretch overflow-hidden">
+                <div class="flex-1 overflow-y-auto">
+
+                    <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col lg:order-last">
+                        <fortnite-news></fortnite-news>
+                    </section>
+                </div>
+
+                <aside class="hidden w-96 overflow-y-auto py-8 lg:block">
+                    <div class="flex gap-x-4 px-5 md:px-8 pb-4">
+                        <h2 class="text-xl text-white"><i class="fad fa-calendar-day"></i> Daily Items</h2>
+                        <Link :href="'/shop'" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">View Shop</Link>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 px-5 md:px-8">
+                        <div v-for="item in dailyItems" :key="item.id">
+                            <div v-if="item['items'][0].id">
+                                <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                                    <div class="bg-light-purple">
+                                        <div class="absolute pl-3">
+                                            <div class="flex justify-end">
+                                                <span class="relative text-xl text-white">{{ item.finalPrice }}</span>
+                                                <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            </div>
+                                        </div>
+
+                                        <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+
+                                        <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+
+                                        <div>
+                                            <h3 class="text-center text-white py-1">{{ item.items[0].name }}</h3>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+
+                            <div v-else>
+                                <div class="bg-light-purple">
+                                    <div class="absolute pl-3">
+                                        <div class="flex justify-end">
+                                            <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        </div>
+                                    </div>
+
+                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+
+                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+
+                                    <div>
+                                        <h3 class="text-center text-white py-1">{{ item.items[0].name }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="px-5 md:px-8 pb-2 pt-4 text-xl text-white"><i class="fad fa-calendar-star"></i> Featured Items</h2>
+                    <div class="grid grid-cols-2 gap-4 px-5 md:px-8">
+                        <div v-for="item in featruedItems" :key="item.id">
+                            <div v-if="item['items'][0].id">
+                                <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                                    <div class="bg-light-purple">
+                                        <div class="absolute pl-3">
+                                            <div class="flex justify-end">
+                                                <span class="relative text-xl text-white">{{ item.finalPrice }}</span>
+                                                <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            </div>
+                                        </div>
+
+                                        <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+
+                                        <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+
+                                        <div>
+                                            <h3 class="text-center text-white py-1">{{ item.items[0].name }}</h3>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+
+                            <div v-else>
+                                <div class="bg-light-purple">
+                                    <div class="absolute pl-3">
+                                        <div class="flex justify-end">
+                                            <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        </div>
+                                    </div>
+
+                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+
+                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+
+                                    <div>
+                                        <h3 class="text-center text-white py-1">{{ item.items[0].name }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5 md:px-8">
+
+                    </div>
+                </aside>
+            </div>
+        </div>
     </app-layout>
 </template>
 
@@ -79,15 +187,25 @@
 import AppLayout from "../Layouts/AppLayout";
 import FortniteNews from "../Components/FortniteNews";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import axios from "axios";
+import Button from "../Jetstream/Button";
 
 export default {
     name: 'Index',
+
+    data() {
+        return {
+            dailyItems: null,
+            featruedItems: null,
+        }
+    },
 
     components: {
         AppLayout,
         Link,
         FortniteNews,
-        Head
+        Head,
+        Button,
     },
 
     props: {
@@ -105,7 +223,20 @@ export default {
                     return number.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })
             }
         },
+
+        getCurrentShop() {
+            axios.get('/api/fortnite/shop')
+                .then(response => {
+                    console.log(response.data.data.daily);
+                    this.dailyItems = response.data.data.daily.entries;
+                    this.featruedItems = response.data.data.featured.entries;
+                });
+        }
     },
+
+    mounted() {
+        this.getCurrentShop();
+    }
 }
 </script>
 

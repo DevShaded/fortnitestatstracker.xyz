@@ -197,4 +197,20 @@ class FortniteShopController extends Controller
                         ]);
         }
     }
+
+    /**
+     * @throws GuzzleException
+     */
+    public function getCurrentShopWithAPI()
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody());
+    }
 }
