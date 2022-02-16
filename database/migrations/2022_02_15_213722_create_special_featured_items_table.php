@@ -10,7 +10,7 @@ class CreateSpecialFeaturedItemsTable extends Migration
     {
         Schema::create('special_featured_items', function (Blueprint $table) {
             $table->id();
-            $table->string('item_id')->unique()->nullable();
+            $table->string('item_id')->nullable();
             $table->string('item_name');
             $table->unsignedBigInteger('item_price');
             $table->string('item_background')->nullable();
