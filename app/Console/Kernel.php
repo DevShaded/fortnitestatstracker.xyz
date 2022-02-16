@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('fortnite:update-item-shop')->everyMinute();
+         $schedule->command('fortnite:update-item-shop')->dailyAt('00:00');
     }
 
     /**
