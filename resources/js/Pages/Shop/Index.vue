@@ -24,23 +24,23 @@
                 <!-- Daily Items -->
                 <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-calendar-day"></i> Daily Items</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8">
-                    <div v-for="item in data.data.daily.entries" :key="item.id">
-                        <div v-if="item['items'][0].id">
-                            <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                    <div v-for="item in data.item_shop.daily" :key="item.id">
+                        <div v-if="item.item_id">
+                            <Link :href="'/shop/cosmetic/' + item.item_id">
                                 <div class="bg-light-purple">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
-                                            <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                            <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                             <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                    <img v-else :src="item.item_background" alt="">
 
                                     <div>
-                                        <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                        <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                                     </div>
                                 </div>
                             </Link>
@@ -48,19 +48,21 @@
 
                         <div v-else>
                             <div class="bg-light-purple">
-                                <div class="absolute pl-3">
-                                    <div class="flex justify-end">
-                                        <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
-                                        <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                <div class="bg-light-purple">
+                                    <div class="absolute pl-3">
+                                        <div class="flex justify-end">
+                                            <span class="relative text-2xl text-white">{{ item.item_price }}</span>
+                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                    <img v-else :src="item.item_background" alt="">
 
-                                <div>
-                                    <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                    <div>
+                                        <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,22 +73,22 @@
             <!-- Featured Items -->
             <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-calendar-star"></i> Featured Items</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
-                <div v-for="item in data.data.featured.entries" :key="item.id">
-                    <div v-if="item['items'][0].id">
-                        <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                <div v-for="item in data.item_shop.featured" :key="item.id">
+                    <div v-if="item.item_id">
+                        <Link :href="'/shop/cosmetic/' + item.item_id">
                             <div class="bg-light-purple">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
-                                        <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                        <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                         <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                <img v-else :src="item.item_background" alt="">
 
-                                <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                             </div>
                         </Link>
                     </div>
@@ -95,59 +97,58 @@
                         <div class="bg-light-purple">
                             <div class="absolute pl-3">
                                 <div class="flex justify-end">
-                                    <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                    <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                     <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                 </div>
                             </div>
 
-                            <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                            <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                            <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                            <img v-else :src="item.item_background" alt="">
 
-                            <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                            <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Special Daily Items -->
-            <div v-if="data.data.specialDaily">
+            <div v-if="data.special_daily">
                 <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Daily Items</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
-                    <div v-for="item in data.data.specialDaily.entries" :key="item.id">
-                        <div v-if="item['items'][0].id">
-                            <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                    <div v-for="item in data.item_shop.specialDaily.entries" :key="item.id">
+                        <div v-if="item.item_id">
+                            <Link :href="'/shop/cosmetic/' + item.item_id">
                                 <div class="bg-light-purple">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
-                                            <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                            <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                             <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                    <img v-else :src="item.item_background" alt="">
 
-                                    <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                    <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                                 </div>
                             </Link>
                         </div>
-
                         <div v-else>
                             <div class="bg-light-purple">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
-                                        <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                        <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                         <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                <img v-else :src="item.item_background" alt="">
 
-                                <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                             </div>
                         </div>
                     </div>
@@ -155,25 +156,25 @@
             </div>
 
             <!-- Special Featured Items -->
-            <div v-if="data.data.specialFeatured">
+            <div v-if="data.item_shop.special_featured">
                 <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Featured Items</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
-                    <div v-for="item in data.data.specialFeatured.entries" :key="item.id">
-                        <div v-if="item['items'][0].id">
-                            <Link :href="'/shop/cosmetic/' + item['items'][0].id">
+                    <div v-for="item in data.item_shop.special_featured" :key="item.id">
+                        <div v-if="item.item_id">
+                            <Link :href="'/shop/cosmetic/' + item.item_id">
                                 <div class="bg-light-purple">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
-                                            <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                            <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                             <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                    <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                    <img v-else :src="item.item_background" alt="">
 
-                                    <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                    <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                                 </div>
                             </Link>
                         </div>
@@ -182,16 +183,16 @@
                             <div class="bg-light-purple">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
-                                        <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
+                                        <span class="relative text-2xl text-white">{{ item.item_price }}</span>
                                         <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
 
-                                <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
+                                <img v-else :src="item.item_background" alt="">
 
-                                <h3 class="text-center text-xl text-white py-1">{{ item.items[0].name }}</h3>
+                                <h3 class="text-center text-xl text-white py-1">{{ item.item_name }}</h3>
                             </div>
                         </div>
                     </div>

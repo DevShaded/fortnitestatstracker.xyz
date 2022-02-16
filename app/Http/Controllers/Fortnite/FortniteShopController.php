@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fortnite\Shop\CosmeticItem;
+use App\Models\Fortnite\Shop\DailyItem;
+use App\Models\Fortnite\Shop\FeaturedItem;
+use App\Models\Fortnite\Shop\SpecialDailyItem;
+use App\Models\Fortnite\Shop\SpecialFeaturedItem;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\{RedirectResponse, Request};
@@ -19,15 +23,21 @@ class FortniteShopController extends Controller
      */
     public function index(): Response
     {
-        $client = new Client();
+        $dailyItemShop = DailyItem::all();
 
-        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key')
-            ]
-        ]);
+        if ($dailyItemShop->isEmpty()) {
+            $this->storeItemShopFromAPI();
+            return $this->index();
+        }
 
-        $data = json_decode($response->getBody());
+        $data = [
+            'item_shop' => [
+                'daily' => $dailyItemShop,
+                'featured' => FeaturedItem::all(),
+                'special_featured' => SpecialFeaturedItem::all() ?? null,
+                'special_daily' => SpecialDailyItem::all() ?? null,
+            ],
+        ];
 
         return Inertia::render('Shop/Index', [
             'data' => $data
@@ -212,5 +222,69 @@ class FortniteShopController extends Controller
         ]);
 
         return json_decode($response->getBody());
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    private function storeItemShopFromAPI()
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        $response = json_decode($response->getBody(), true);
+
+        if ($response['status'] === 200) {
+
+            if ($response['data']['daily']) {
+                foreach ($response['data']['daily']['entries'] as $item) {
+                    DailyItem::create([
+                        'item_id'         => $item['items'][0]['id'] ?? null,
+                        'item_name'       => $item['items'][0]['name'],
+                        'item_price'      => $item['finalPrice'],
+                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background']
+                    ]);
+                }
+            }
+
+
+            if ($response['data']['featured']) {
+                foreach ($response['data']['featured']['entries'] as $item) {
+                    FeaturedItem::create([
+                        'item_id'         => $item['items'][0]['id'] ?? null,
+                        'item_name'       => $item['items'][0]['name'],
+                        'item_price'      => $item['finalPrice'],
+                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
+                    ]);
+                }
+            }
+
+            if ($response['data']['specialFeatured']) {
+                foreach ($response['data']['specialFeatured']['entries'] as $item) {
+                    SpecialFeaturedItem::create([
+                        'item_id'         => $item['items'][0]['id'] ?? null,
+                        'item_name'       => $item['items'][0]['name'],
+                        'item_price'      => $item['finalPrice'],
+                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
+                    ]);
+                }
+            }
+
+            if ($response['data']['specialDaily']) {
+                foreach ($response['data']['specialDaily']['entries'] as $item) {
+                    SpecialDailyItem::create([
+                        'item_id'         => $item['items'][0]['id'] ?? null,
+                        'item_name'       => $item['items'][0]['name'],
+                        'item_price'      => $item['finalPrice'],
+                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
+                    ]);
+                }
+            }
+        }
     }
 }
