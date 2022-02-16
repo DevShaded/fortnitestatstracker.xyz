@@ -29,6 +29,8 @@ class UpdateItemShopCommand extends Command
 
         $response = json_decode($response->getBody(), true);
 
+        dd($response['data']['featured']);
+
         if ($response['status'] === 200) {
 
             if ($response['data']['daily']) {
