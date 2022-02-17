@@ -58,7 +58,7 @@
                 <h2 v-if="isActive('ASIA')">Events & Tournaments for <span class="text-yellow-400">Asia</span></h2>
             </div>
 
-            <span class="text-center text-white font-sans font-medium text-xs">This is still in Alpha mode! Updates are not available at the time!</span>
+            <span class="text-center text-white font-sans font-medium text-xs">Fortnite events are updated every week!</span>
 
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-9">
                 <!-- EU Stats -->
