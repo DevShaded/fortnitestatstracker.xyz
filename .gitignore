@@ -4,7 +4,7 @@
 /public/js/*.js
 /public/css/*.css
 /public/mix-manifest.json
-/public/js/app.js.LICENSE.txt
+/public/js/*.txt
 /storage/*.key
 /vendor
 .env
