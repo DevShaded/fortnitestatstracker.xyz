@@ -24,6 +24,8 @@ class UpdateEventsCommand extends Command
     {
         Schema::disableForeignKeyConstraints();
         FortniteEvent::truncate();
+        FortniteEventPlatform::truncate();
+        FortniteEventWindow::truncate();
         $this->storeFortniteEUEventInDB();
         $this->storeFortniteNAEEventInDB();
         $this->storeFortniteNAWEventInDB();
@@ -35,7 +37,7 @@ class UpdateEventsCommand extends Command
     {
         $client = new Client();
 
-        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=current', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
@@ -81,7 +83,7 @@ class UpdateEventsCommand extends Command
     {
         $client = new Client();
 
-        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAE', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=current&region=NAE', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
@@ -127,7 +129,7 @@ class UpdateEventsCommand extends Command
     {
         $client = new Client();
 
-        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=NAW', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=current&region=NAW', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
@@ -173,7 +175,7 @@ class UpdateEventsCommand extends Command
     {
         $client = new Client();
 
-        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=19&region=ASIA', [
+        $responseEU = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=current&region=ASIA', [
             'headers' => [
                 'Authorization' => config('services.fortnite.api.key_io')
             ]
