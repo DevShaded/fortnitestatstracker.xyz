@@ -22,12 +22,12 @@
         <div class="max-w-7xl mx-auto">
             <div class="my-10">
                 <!-- Daily Items -->
-                <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-calendar-day"></i> Daily Items</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8">
+                <h2 class="px-5 md:px-8 pb-4 text-2xl text-white"><i class="fad fa-calendar-day"></i> Daily Items</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 px-5 md:px-8">
                     <div v-for="item in data.item_shop.daily" :key="item.id">
                         <div v-if="item.item_id">
                             <Link :href="'/shop/cosmetic/' + item.item_id">
-                                <div class="bg-light-purple">
+                                <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -48,7 +48,7 @@
 
                         <div v-else>
                             <div class="bg-light-purple">
-                                <div class="bg-light-purple">
+                                <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -71,12 +71,12 @@
             </div>
 
             <!-- Featured Items -->
-            <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-calendar-star"></i> Featured Items</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
+            <h2 class="px-5 md:px-8 pb-4 text-2xl text-white"><i class="fad fa-calendar-star"></i> Featured Items</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 px-5 md:px-8 pb-10">
                 <div v-for="item in data.item_shop.featured" :key="item.id">
                     <div v-if="item.item_id">
                         <Link :href="'/shop/cosmetic/' + item.item_id">
-                            <div class="bg-light-purple">
+                            <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div v-else>
-                        <div class="bg-light-purple">
+                        <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                             <div class="absolute pl-3">
                                 <div class="flex justify-end">
                                     <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -114,12 +114,12 @@
 
             <!-- Special Daily Items -->
             <div v-if="data.special_daily">
-                <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Daily Items</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
+                <h2 class="px-5 md:px-8 pb-4 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Daily Items</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 px-5 md:px-8 pb-10">
                     <div v-for="item in data.item_shop.specialDaily.entries" :key="item.id">
                         <div v-if="item.item_id">
                             <Link :href="'/shop/cosmetic/' + item.item_id">
-                                <div class="bg-light-purple">
+                                <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -136,7 +136,7 @@
                             </Link>
                         </div>
                         <div v-else>
-                            <div class="bg-light-purple">
+                            <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -157,12 +157,12 @@
 
             <!-- Special Featured Items -->
             <div v-if="data.item_shop.special_featured">
-                <h2 class="px-5 md:px-8 pb-2 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Featured Items</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 px-5 md:px-8 pb-10">
+                <h2 class="px-5 md:px-8 pb-4 text-2xl text-white"><i class="fad fa-sparkles"></i> Special Featured Items</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 px-5 md:px-8 pb-10">
                     <div v-for="item in data.item_shop.special_featured" :key="item.id">
                         <div v-if="item.item_id">
                             <Link :href="'/shop/cosmetic/' + item.item_id">
-                                <div class="bg-light-purple">
+                                <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
@@ -180,7 +180,7 @@
                         </div>
 
                         <div v-else>
-                            <div class="bg-light-purple">
+                            <div class="bg-light-purple md:transition md:duration-300 md:hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none">
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
