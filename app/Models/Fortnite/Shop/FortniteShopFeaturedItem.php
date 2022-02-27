@@ -5,7 +5,7 @@ namespace App\Models\Fortnite\Shop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SpecialFeaturedItem extends Model
+class FortniteShopFeaturedItem extends Model
 {
     use HasFactory;
 

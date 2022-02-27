@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fortnite\Shop\CosmeticItem;
-use App\Models\Fortnite\Shop\DailyItem;
-use App\Models\Fortnite\Shop\FeaturedItem;
-use App\Models\Fortnite\Shop\SpecialDailyItem;
-use App\Models\Fortnite\Shop\SpecialFeaturedItem;
+use App\Models\Fortnite\Shop\{CosmeticItem,
+    FortniteShopDailyItem,
+    FortniteShopFeaturedItem,
+    FortniteShopSpecialDailyItem,
+    FortniteShopSpecialFeaturedItem};
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\{RedirectResponse, Request};
-use Inertia\Inertia;
-use Inertia\Response;
+use Inertia\{Inertia, Response};
 
 class FortniteShopController extends Controller
 {
@@ -23,7 +22,7 @@ class FortniteShopController extends Controller
      */
     public function index(): Response
     {
-        $dailyItemShop = DailyItem::all();
+        $dailyItemShop = FortniteShopDailyItem::all();
 
         if ($dailyItemShop->isEmpty()) {
             $this->storeItemShopFromAPI();
@@ -33,9 +32,9 @@ class FortniteShopController extends Controller
         $data = [
             'item_shop' => [
                 'daily' => $dailyItemShop,
-                'featured' => FeaturedItem::all(),
-                'special_featured' => SpecialFeaturedItem::all() ?? null,
-                'special_daily' => SpecialDailyItem::all() ?? null,
+                'featured' => FortniteShopFeaturedItem::all(),
+                'special_featured' => FortniteShopSpecialFeaturedItem::all() ?? null,
+                'special_daily' => FortniteShopSpecialDailyItem::all() ?? null,
             ],
         ];
 
@@ -243,7 +242,7 @@ class FortniteShopController extends Controller
 
             if ($response['data']['daily']) {
                 foreach ($response['data']['daily']['entries'] as $item) {
-                    DailyItem::create([
+                    FortniteShopDailyItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -255,7 +254,7 @@ class FortniteShopController extends Controller
 
             if ($response['data']['featured']) {
                 foreach ($response['data']['featured']['entries'] as $item) {
-                    FeaturedItem::create([
+                    FortniteShopFeaturedItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -266,7 +265,7 @@ class FortniteShopController extends Controller
 
             if ($response['data']['specialFeatured']) {
                 foreach ($response['data']['specialFeatured']['entries'] as $item) {
-                    SpecialFeaturedItem::create([
+                    FortniteShopSpecialFeaturedItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -277,7 +276,7 @@ class FortniteShopController extends Controller
 
             if ($response['data']['specialDaily']) {
                 foreach ($response['data']['specialDaily']['entries'] as $item) {
-                    SpecialDailyItem::create([
+                    FortniteShopSpecialDailyItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],

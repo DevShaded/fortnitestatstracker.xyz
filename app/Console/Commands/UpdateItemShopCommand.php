@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Fortnite\Shop\DailyItem;
-use App\Models\Fortnite\Shop\FeaturedItem;
-use App\Models\Fortnite\Shop\SpecialDailyItem;
-use App\Models\Fortnite\Shop\SpecialFeaturedItem;
+use App\Models\Fortnite\Shop\FortniteShopDailyItem;
+use App\Models\Fortnite\Shop\FortniteShopFeaturedItem;
+use App\Models\Fortnite\Shop\FortniteShopSpecialDailyItem;
+use App\Models\Fortnite\Shop\FortniteShopSpecialFeaturedItem;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 
@@ -32,9 +32,9 @@ class UpdateItemShopCommand extends Command
         if ($response['status'] === 200) {
 
             if ($response['data']['daily']) {
-                DailyItem::truncate();
+                FortniteShopDailyItem::truncate();
                 foreach ($response['data']['daily']['entries'] as $item) {
-                    DailyItem::create([
+                    FortniteShopDailyItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -45,9 +45,9 @@ class UpdateItemShopCommand extends Command
 
 
             if ($response['data']['featured']) {
-                FeaturedItem::truncate();
+                FortniteShopFeaturedItem::truncate();
                 foreach ($response['data']['featured']['entries'] as $item) {
-                    FeaturedItem::create([
+                    FortniteShopFeaturedItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -57,9 +57,9 @@ class UpdateItemShopCommand extends Command
             }
 
             if ($response['data']['specialFeatured']) {
-                SpecialFeaturedItem::truncate();
+                FortniteShopSpecialFeaturedItem::truncate();
                 foreach ($response['data']['specialFeatured']['entries'] as $item) {
-                    SpecialFeaturedItem::create([
+                    FortniteShopSpecialFeaturedItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
@@ -69,9 +69,9 @@ class UpdateItemShopCommand extends Command
             }
 
             if ($response['data']['specialDaily']) {
-                SpecialDailyItem::truncate();
+                FortniteShopSpecialDailyItem::truncate();
                 foreach ($response['data']['specialDaily']['entries'] as $item) {
-                    SpecialDailyItem::create([
+                    FortniteShopSpecialDailyItem::create([
                         'item_id'         => $item['items'][0]['id'] ?? null,
                         'item_name'       => $item['items'][0]['name'],
                         'item_price'      => $item['finalPrice'],
