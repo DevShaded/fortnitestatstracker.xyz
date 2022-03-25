@@ -51,7 +51,7 @@
                     <button class="w-full p-2 md:w-1/2 bg-white hover:bg-yellow-400">Search</button>
                 </form>
                 <div v-if="$page.props.errors">
-                    <span class="text-xl text-white">{{ $page.props.errors[0] }}</span>
+                    <span class="text-xl text-white">{{ $page.props.errors[0] || $page.props.errors.username }}</span>
                 </div>
             </div>
         </header>

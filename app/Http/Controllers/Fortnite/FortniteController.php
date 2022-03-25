@@ -143,7 +143,11 @@ class FortniteController extends Controller
      */
     public function search(Request $request): RedirectResponse
     {
-        $username = $request->get('username');
+        $request->validate([
+            'username' => 'required|string'
+        ]);
+
+        $username = $request->input('username');
 
         return redirect()->route('fn-player', [
             'username' => $username,
