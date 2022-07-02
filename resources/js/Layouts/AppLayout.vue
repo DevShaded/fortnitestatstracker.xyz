@@ -8,8 +8,8 @@
                     <div class="flex">
                         <div class="flex-shrink-0 flex items-center">
                             <Link href="/">
-                                <img class="block lg:hidden h-12 w-auto rounded-md" src="/images/logo.jpg" alt="Fortnite_Logo" />
-                                <img class="hidden lg:block h-12 w-auto rounded-md" src="/images/logo.jpg" alt="Fortnite_Logo" />
+                                <img class="block lg:hidden h-12 w-auto rounded-md" src="../../images/logo.jpg" alt="Fortnite_Logo" />
+                                <img class="hidden lg:block h-12 w-auto rounded-md" src="../../images/logo.jpg" alt="Fortnite_Logo" />
                             </Link>
                         </div>
                         <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
@@ -84,8 +84,8 @@ import { reactive } from "vue";
 import { Inertia } from '@inertiajs/inertia'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-import NavLink from "../Jetstream/NavLink";
-import ResponsiveNavLink from "../Jetstream/ResponsiveNavLink";
+import NavLink from "../Jetstream/NavLink.vue";
+import ResponsiveNavLink from "../Jetstream/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 const navigation = {
