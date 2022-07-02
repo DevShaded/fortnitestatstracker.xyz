@@ -31,11 +31,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.item_background" alt="">
 
@@ -52,11 +52,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.item_background" alt="">
 
@@ -80,11 +80,11 @@
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                        <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                 <img v-else :src="item.item_background" alt="">
 
@@ -98,11 +98,11 @@
                             <div class="absolute pl-3">
                                 <div class="flex justify-end">
                                     <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                    <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                    <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                 </div>
                             </div>
 
-                            <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                            <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                             <img v-else :src="item.item_background" alt="">
 
@@ -123,11 +123,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.item_background" alt="">
 
@@ -140,11 +140,11 @@
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                        <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                 <img v-else :src="item.item_background" alt="">
 
@@ -166,11 +166,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.item_background" alt="">
 
@@ -184,11 +184,11 @@
                                 <div class="absolute pl-3">
                                     <div class="flex justify-end">
                                         <span class="relative text-2xl text-white">{{ item.item_price }}</span>
-                                        <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                        <img src="../../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                     </div>
                                 </div>
 
-                                <img v-if="!item.item_background" src="/images/shop/not_found.jpg" alt="">
+                                <img v-if="!item.item_background" src="../../../images/shop/not_found.jpg" alt="">
 
                                 <img v-else :src="item.item_background" alt="">
 
@@ -203,7 +203,7 @@
 </template>
 
 <script>
-import AppLayout from "../../Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout.vue";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 
 export default {
