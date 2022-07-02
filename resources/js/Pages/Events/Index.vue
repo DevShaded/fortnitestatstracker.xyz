@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import AppLayout from "../../Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout.vue";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 
 export default {

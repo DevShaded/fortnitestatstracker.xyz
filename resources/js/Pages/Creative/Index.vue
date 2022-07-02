@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import AppLayout from "../../Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout.vue";
 import { Link, Head } from "@inertiajs/inertia-vue3";
 import moment from "moment";
-import CreativeSearch from "../../Components/CreativeSearch";
+import CreativeSearch from "../../Components/CreativeSearch.vue";
 import axios from "axios";
 
 export default {

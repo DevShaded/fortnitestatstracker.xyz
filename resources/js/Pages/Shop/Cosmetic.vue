@@ -44,7 +44,7 @@
 
                     <div class="p-2">
                         <h4 class="text-yellow-400 text-xl">Obtained with:</h4>
-                        <p class="flex text-white text-xl md:text-2xl">{{ data.cosmetic.price }} <img src="/images/shop/vbuck.png" alt="" class="h-7 pl-1"></p>
+                        <p class="flex text-white text-xl md:text-2xl">{{ data.cosmetic.price }} <img src="/resources/images/shop/vbuck.png" alt="" class="h-7 pl-1"></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import AppLayout from "../../Layouts/AppLayout";
+import AppLayout from "../../Layouts/AppLayout.vue";
 import moment from "moment";
 import axios from "axios";
 import { Head } from '@inertiajs/inertia-vue3'

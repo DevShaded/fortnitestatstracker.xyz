@@ -8,14 +8,14 @@
         <meta property="og:url" content="https://fortnitestatstracker.xyz">
         <meta property="og:title" content="Find your Fortnite stats now!">
         <meta property="og:description" content="Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day!">
-        <meta property="og:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+        <meta property="og:image" content="https://fortnitestatstracker.xyz/favicons/android-chrome-256x256.png">
 
         <meta name="twitter:domain" content="fortnitestatstracker.xyz">
         <meta name="twitter:card" content="summary">
         <meta name="twitter:url" content="https://fortnitestatstracker.xyz">
         <meta name="twitter:title" content="Find your Fortnite stats now!">
         <meta name="twitter:description" content="Welcome to fortnitestatstracker.xyz! We deliver our best Fortnite stats for every user on Fortnite to this day!">
-        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/images/favicons/android-chrome-256x256.png">
+        <meta name="twitter:image" content="https://fortnitestatstracker.xyz/favicons/android-chrome-256x256.png">
     </Head>
 
 
@@ -93,11 +93,11 @@
                                         <div class="absolute pl-3">
                                             <div class="flex justify-end">
                                                 <span class="relative text-xl text-white">{{ item.finalPrice }}</span>
-                                                <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                                <img src="../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                             </div>
                                         </div>
 
-                                        <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                        <img v-if="!item.newDisplayAsset" src="../../images/shop/not_found.jpg" alt="">
 
                                         <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
 
@@ -113,11 +113,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.newDisplayAsset" src="../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
 
@@ -138,11 +138,11 @@
                                         <div class="absolute pl-3">
                                             <div class="flex justify-end">
                                                 <span class="relative text-xl text-white">{{ item.finalPrice }}</span>
-                                                <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                                <img src="../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                             </div>
                                         </div>
 
-                                        <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                        <img v-if="!item.newDisplayAsset" src="../../images/shop/not_found.jpg" alt="">
 
                                         <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
 
@@ -158,11 +158,11 @@
                                     <div class="absolute pl-3">
                                         <div class="flex justify-end">
                                             <span class="relative text-2xl text-white">{{ item.finalPrice }}</span>
-                                            <img src="/images/shop/vbuck.png" alt="" class="h-7 pt-1">
+                                            <img src="../../images/shop/vbuck.png" alt="" class="h-7 pt-1">
                                         </div>
                                     </div>
 
-                                    <img v-if="!item.newDisplayAsset" src="/images/shop/not_found.jpg" alt="">
+                                    <img v-if="!item.newDisplayAsset" src="../../images/shop/not_found.jpg" alt="">
 
                                     <img v-else :src="item.newDisplayAsset['materialInstances'][0].images.Background" alt="">
 
@@ -173,10 +173,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="px-5 py-5 md:px-8">
-
-                    </div>
                 </aside>
             </div>
         </div>
@@ -184,11 +180,11 @@
 </template>
 
 <script>
-import AppLayout from "../Layouts/AppLayout";
-import FortniteNews from "../Components/FortniteNews";
+import AppLayout from "../Layouts/AppLayout.vue";
+import FortniteNews from "../Components/FortniteNews.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import axios from "axios";
-import Button from "../Jetstream/Button";
+import Button from "../Jetstream/Button.vue";
 
 export default {
     name: 'Index',

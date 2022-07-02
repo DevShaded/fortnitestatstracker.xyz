@@ -34,11 +34,21 @@ Branches are for version control. This makes it possible to work on multiple iss
 
 ### Cloning the Repository
 1. Navigate to your Programming folder and open your terminal/command prompt
-2. Clone this repository by typing: `git clone https://github.com/DevShaded/fortnitestatstracker.xyz.git`
+2. Clone this repository by typing:
+```bash
+git clone https://github.com/DevShaded/fortnitestatstracker.xyz.git
+```
 
 ### Installing Dependencies
 1. Navigate to the root directory of the repository and open your terminal/command prompt
-2. Install dependencies by typing: `composer install` and then type `npm install`
+2. Install dependencies by typing: 
+```bash 
+composer install
+``` 
+and then type
+```bash
+npm install
+```
 
 ### Environment Setup
 1. We need to copy the .env.example file to .env that you create, and change the values to your own.
@@ -50,13 +60,30 @@ Branches are for version control. This makes it possible to work on multiple iss
 
 ### **Do not ever upload the `.env` file as it contains private credentials.**
 
-### Running the Application
-3. Compile the Javascript and CSS files by typing: `npm run dev`
-4. Since we are using [SSR with inertia.js](https://inertiajs.com/server-side-rendering) we need to run the SSR server in the background.
-    1. We can do this by typing: `node /public/js/ssr.js`
-    2. Or if you want to use [PM2](https://www.pm2.io/). You can run the SSR server by typing: `pm2 start /public/js/ssr.js --watch`
-5. Then we can run the artisan server command by typing: `php artisan serve`
+### Running the Application (PRODUCTION)
+1. Now we need to run the build command that is located in the `package.json` file
+```bash
+npm run build
+```
+2. Then we need to start the `ssr.js` server!
+   1. Method 1:
+      1. We can start the `ssr.js` server with just doing
+      ```bash
+      node /storage/ssr/ssr.js
+      ```
+   2. Method 2:
+      1. we can also use [PM2](https://www.pm2.io/) to start the `ssr.js` server with this command
+      ```bash
+      pm2 start /storage/ssr/ssr.js --watch
+      ```
 
+### Running the Application (LOCAL)
+We need to run the dev command that is located in the `package.json` file
+```bash
+npm run dev
+```
+
+Now you should be all set with the application!
 ---
 
 ### Any issues? Open a new [issue](https://github.com/DevShaded/fortnitestatstracker.xyz/issues)!

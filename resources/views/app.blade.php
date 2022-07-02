@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="keywords" content="Fortnite, Fortnite Stats Tracker, Stats Tracker, Stats, Tracker"/>
         <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="{{ asset('/images/favicons/browserconfig.xml') }}">
+        <meta name="msapplication-config" content="{{ asset('/favicons/browserconfig.xml') }}">
         <meta name="theme-color" content="#2a095f">
 
         <!-- Fonts -->
@@ -15,18 +15,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Staatliches&display=swap" rel="stylesheet">
 
         <!-- Favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicons/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicons/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicons/favicon-16x16.png') }}">
-        <link rel="manifest" href="{{ asset('/images/favicons/site.json') }}">
-        <link rel="mask-icon" href="{{ asset('/images/favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/favicons/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicons/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('/favicons/site.json') }}">
+        <link rel="mask-icon" href="{{ asset('/favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
-        <!-- Styles -->
-        <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-
         <!-- Scripts -->
-        <script src="{{ mix('/js/app.js') }}" defer></script>
         <script src="https://kit.fontawesome.com/566002e451.js" crossorigin="anonymous"></script>
 
         @if(config('app.env') === 'production')
@@ -44,6 +40,7 @@
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7348431632024620"
                         crossorigin="anonymous"></script>
         @endif
+        @vite('resources/js/app.js')
         @inertiaHead
     </head>
     <body class="bg-dark-purple font-fortnite antialiased">
