@@ -109,17 +109,16 @@ class FortniteController extends Controller
             }
         }
 
-        $playerID = FortnitePlayer::where('username', $username)->first();
-        $stats = $this->getFortnitePlayerStats($playerID->account_id);
+        $stats = $this->getFortnitePlayerStats($player->account_id);
 
         $data = [
             'account_information' => [
-                'account_id' => $playerID->account_id,
-                'username'   => $playerID->username,
-                'level'      => $playerID->level,
-                'progress'   => $playerID->progress,
-                'image'      => $playerID->image,
-                'updated_at' => $playerID->updated_at,
+                'account_id' => $player->account_id,
+                'username'   => $player->username,
+                'level'      => $player->level,
+                'progress'   => $player->progress,
+                'image'      => $player->image,
+                'updated_at' => $player->updated_at,
             ],
 
             'account_stats' => [
