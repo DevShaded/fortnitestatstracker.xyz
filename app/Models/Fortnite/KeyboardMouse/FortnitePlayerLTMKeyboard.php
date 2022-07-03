@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FortnitePlayerLTMKeyboard extends Model
 {
-    use Guid, HasFactory;
+    use Guid;
 
     /**
      * The attributes that are mass assignable.

@@ -21,8 +21,6 @@ use Illuminate\Database\Eloquent\{Factories\HasFactory, Model, Relations\HasMany
 
 class FortnitePlayer extends Model
 {
-    use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
