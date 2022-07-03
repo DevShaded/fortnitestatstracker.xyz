@@ -124,7 +124,7 @@ class FortniteShopController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             return $data['item']['id'];
         } else {
             return false;
@@ -150,7 +150,7 @@ class FortniteShopController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             CosmeticItem::insertOrIgnore([
                 'cosmetic_id'   => $data['item']['id'],
                 'name'          => $data['item']['name'],
@@ -188,7 +188,7 @@ class FortniteShopController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             CosmeticItem::where('cosmetic_id', $cosmeticID)
                         ->update([
                             'name'          => $data['item']['name'],

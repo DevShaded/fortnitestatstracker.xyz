@@ -100,6 +100,7 @@ class FortniteCreativeController extends Controller
     /**
      * update the current creative island in the database
      *
+     * @throws GuzzleException
      */
     public function update(Request $request)
     {
@@ -143,7 +144,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             foreach ($data['featured'] as $creative) {
                 $creativeFeatureIsland = new CreativeFeatureIsland();
                 $creativeFeatureIsland->island_code = $creative['code'];
@@ -174,7 +175,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if (isset($data['result']) == true) {
+        if (isset($data['result'])) {
             return $data['island']['code'];
         } else {
             return false;
@@ -198,7 +199,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             $creativeIsland = new CreativeIsland();
             $creativeIsland->island_code = $data['island']['code'];
             $creativeIsland->island_name = $data['island']['title'];
@@ -226,7 +227,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             CreativeIsland::where('island_code', $code)
                           ->update([
                               'island_name'        => $data['island']['title'],
