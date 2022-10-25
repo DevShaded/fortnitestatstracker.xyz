@@ -4,6 +4,7 @@
 /public/build
 /storage/*.key
 /storage/ssr
+/storage/debugbar
 /vendor
 .env
 .env.backup
@@ -13,6 +14,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/.idea
 /.idea
 /.vscode
