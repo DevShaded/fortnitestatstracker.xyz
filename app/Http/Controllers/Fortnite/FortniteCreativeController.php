@@ -45,11 +45,9 @@ class FortniteCreativeController extends Controller
      * Retrieve the creative island from the database if possible, otherwise try pulling the island from the API
      * Then return to the island view with the data
      *
-     * @param $code
-     * @return RedirectResponse|Response
      * @throws GuzzleException
      */
-    public function island($code): Response | RedirectResponse
+    public function island(string $code): Response|RedirectResponse
     {
         // Get the creative island from the database
         $island = CreativeIsland::where('island_code', $code)->first();
@@ -84,9 +82,6 @@ class FortniteCreativeController extends Controller
     /**
      * Get the code key from the post request,
      * and then redirect the user to the island() method
-     *
-     * @param Request $request
-     * @return RedirectResponse
      */
     public function search(Request $request): RedirectResponse
     {
@@ -100,8 +95,9 @@ class FortniteCreativeController extends Controller
     /**
      * update the current creative island in the database
      *
+     * @throws GuzzleException
      */
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         $code = $request->get('code');
 
@@ -113,7 +109,7 @@ class FortniteCreativeController extends Controller
      *
      * @throws GuzzleException
      */
-    public function updateFeaturedIslands()
+    public function updateFeaturedIslands(): void
     {
         $featureIslands = CreativeFeatureIsland::all();
 
@@ -131,7 +127,7 @@ class FortniteCreativeController extends Controller
      *
      * @throws GuzzleException
      */
-    private function storeFeaturedCreativeIsland()
+    private function storeFeaturedCreativeIsland(): void
     {
         $client = new Client();
 
@@ -162,7 +158,7 @@ class FortniteCreativeController extends Controller
      *
      * @throws GuzzleException
      */
-    private function getCreativeIslandFromAPI($code)
+    private function getCreativeIslandFromAPI(string $code): string|bool
     {
         $client = new Client();
 
@@ -186,7 +182,7 @@ class FortniteCreativeController extends Controller
      *
      * @throws GuzzleException
      */
-    private function storeIslandToDB($code)
+    private function storeIslandToDB(string $code): void
     {
         $client = new Client();
 
@@ -212,7 +208,7 @@ class FortniteCreativeController extends Controller
     /**
      * @throws GuzzleException
      */
-    private function updateCreativeIsland($code)
+    private function updateCreativeIsland(string $code): void
     {
         $currentTime = date('Y-m-d H:i:s');
 

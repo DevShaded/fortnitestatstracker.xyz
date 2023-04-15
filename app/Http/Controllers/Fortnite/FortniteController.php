@@ -31,8 +31,6 @@ class FortniteController extends Controller
 {
     /**
      * In this method we return the current leaderboard and return it to the view
-     *
-     * @return Response
      */
     public function index(): Response
     {
@@ -88,8 +86,6 @@ class FortniteController extends Controller
      * Retrieve the player from the database if possible, otherwise try pulling the player from the API
      * Then return to the player view with the data
      *
-     * @param string $username
-     * @return Response|RedirectResponse
      * @throws GuzzleException
      */
     public function player(string $username): Response | RedirectResponse
@@ -137,9 +133,6 @@ class FortniteController extends Controller
     /**
      * Get the username key from the post request,
      * and then redirect the user to the player() method
-     *
-     * @param Request $request
-     * @return RedirectResponse
      */
     public function search(Request $request): RedirectResponse
     {
@@ -157,12 +150,8 @@ class FortniteController extends Controller
     /**
      * Get the username ket from the post request,
      * and then call the API and update old stats with new stats in the Database
-     *
-     * @param Request $request
-     * @return void
-     * @throws GuzzleException
      */
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $username = $request->get('username');
 
@@ -171,9 +160,6 @@ class FortniteController extends Controller
 
     /**
      * Get all the player stats from the Database and return them into an array
-     *
-     * @param $playerID
-     * @return \array[][]
      */
     #[ArrayShape(['stats' => "array[]"])] private function getFortnitePlayerStats($playerID): array
     {
@@ -220,11 +206,8 @@ class FortniteController extends Controller
     /**
      * Try to retrieve the Account ID from the API with the username as the param
      * If the user is not found, or has set their stats to private, send back an error code (403 or 404)
-     *
-     * @param $username
-     * @return int|mixed|void
      */
-    private function getFortnitePlayerFromAPI($username)
+    private function getFortnitePlayerFromAPI($username): string|null
     {
         try {
             $client = new Client();
@@ -247,12 +230,9 @@ class FortniteController extends Controller
 
     /**
      * Get the players fortnite stats from the API and store the stats in the Database
-     *
-     * @param string $playerID
-     * @return void
      * @throws GuzzleException
      */
-    private function storePlayerToDB(string $playerID)
+    private function storePlayerToDB(string $playerID): void
     {
         $client = new Client();
 
@@ -284,7 +264,7 @@ class FortniteController extends Controller
      *
      * @throws GuzzleException
      */
-    private function updatePlayerInDB(string $username)
+    private function updatePlayerInDB(string $username): RedirectResponse
     {
         $currentTime = date('Y-m-d H:i:s');
         $playerID = $this->getFortnitePlayerFromAPI($username);
@@ -619,12 +599,8 @@ class FortniteController extends Controller
 
     /**
      * Here we store the lifetime stats of a player
-     *
-     * @param $playerID
-     * @param $response
-     * @return void
      */
-    private function storeLifetimeStatsToDB($playerID, $response)
+    private function storeLifetimeStatsToDB($playerID, $response): void
     {
         FortnitePlayerOverallLifetime::insertOrIgnore([
             'account_id'      => $playerID,
@@ -726,12 +702,8 @@ class FortniteController extends Controller
 
     /**
      * Here we store the Keyboard & Mouse stats of a player
-     *
-     * @param $playerID
-     * @param $response
-     * @return void
      */
-    private function storeKeyboardStatsToDB($playerID, $response)
+    private function storeKeyboardStatsToDB($playerID, $response): void
     {
         FortnitePlayerOverallKeyboard::insertOrIgnore([
             'account_id'      => $playerID,
@@ -833,12 +805,8 @@ class FortniteController extends Controller
 
     /**
      * Here we store the Gamepad stats as (Playstation, Xbox, Switch)
-     *
-     * @param $playerID
-     * @param $response
-     * @return void
      */
-    private function storeGamepadStatsToDB($playerID, $response)
+    private function storeGamepadStatsToDB($playerID, $response): void
     {
         FortnitePlayerOverallGamepad::insertOrIgnore([
             'account_id'      => $playerID,

@@ -38,8 +38,6 @@ class FortnitePlayerSoloLifetime extends Model
 
     /**
      * Get the fortnite player that owns the solo lifetime stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

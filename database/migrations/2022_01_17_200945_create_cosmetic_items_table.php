@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCosmeticItemsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('cosmetic_items', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -28,7 +28,7 @@ class CreateCosmeticItemsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('cosmetic_items');
     }

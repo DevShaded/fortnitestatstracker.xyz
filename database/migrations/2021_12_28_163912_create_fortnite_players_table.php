@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortnitePlayersTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_players', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -20,7 +20,7 @@ class CreateFortnitePlayersTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('fortnite_players');
     }

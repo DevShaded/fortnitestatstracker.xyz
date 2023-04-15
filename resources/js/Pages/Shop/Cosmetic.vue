@@ -79,7 +79,7 @@
 import AppLayout from "../../Layouts/AppLayout.vue";
 import moment from "moment";
 import axios from "axios";
-import { Head } from '@inertiajs/inertia-vue3'
+import { Head } from "@inertiajs/vue3";
 
 export default {
     name: "Cosmetic",

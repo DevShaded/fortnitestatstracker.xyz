@@ -38,8 +38,6 @@ class FortnitePlayerDuoGamepad extends Model
 
     /**
      * Get the fortnite player that owns the duo gamepad stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {
