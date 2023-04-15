@@ -43,8 +43,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the duo lifetime stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerDuoLifetime(): HasMany
     {
@@ -53,8 +51,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the LTM lifetime stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerLTMLifetime(): HasMany
     {
@@ -63,8 +59,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the overall lifetime stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerOverallLifetime(): HasMany
     {
@@ -73,8 +67,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the solo lifetime stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSoloLifetime(): HasMany
     {
@@ -83,8 +75,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the squad lifetime stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSquadLifetime(): HasMany
     {
@@ -99,8 +89,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the duo keyboard&mouse stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerDuoKeyboard(): HasMany
     {
@@ -109,8 +97,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the LTM keyboard&mouse stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerLTMKeyboard(): HasMany
     {
@@ -119,8 +105,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the overall keyboard&mouse stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerOverallKeyboard(): HasMany
     {
@@ -129,8 +113,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the solo keyboard&mouse stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSoloKeyboard(): HasMany
     {
@@ -139,8 +121,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the squad keyboard&mouse stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSquadKeyboard(): HasMany
     {
@@ -154,8 +134,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the duo gamepad stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerDuoGamepad(): HasMany
     {
@@ -164,8 +142,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the LTM gamepad stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerLTMGamepad(): HasMany
     {
@@ -174,8 +150,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the overall gamepad stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerOverallGamepad(): HasMany
     {
@@ -184,8 +158,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the solo gamepad stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSoloGamepad(): HasMany
     {
@@ -194,8 +166,6 @@ class FortnitePlayer extends Model
 
     /**
      * Get all the of the squad gamepad stats for the Fortnite Player
-     *
-     * @return HasMany
      */
     public function FortnitePlayerSquadGamepad(): HasMany
     {

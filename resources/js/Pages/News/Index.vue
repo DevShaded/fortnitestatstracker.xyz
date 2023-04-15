@@ -98,7 +98,7 @@
 
 <script>
 import AppLayout from "../../Layouts/AppLayout.vue";
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head } from "@inertiajs/vue3";
 
 export default {
     name: 'NewsIndex',

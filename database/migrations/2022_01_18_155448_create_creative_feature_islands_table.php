@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCreativeFeatureIslandsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('creative_feature_islands', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -20,7 +20,7 @@ class CreateCreativeFeatureIslandsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('creative_feature_islands');
     }

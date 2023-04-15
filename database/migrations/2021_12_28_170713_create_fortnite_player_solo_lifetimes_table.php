@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortnitePlayerSoloLifetimesTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_player_solo_lifetimes', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -33,7 +33,7 @@ class CreateFortnitePlayerSoloLifetimesTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('fortnite_player_solo_lifetimes');
     }

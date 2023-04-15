@@ -23,8 +23,8 @@
                         <!-- Mobile menu button -->
                         <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-200 hover:bg-light-purple focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                             <span class="sr-only">Open main menu</span>
-                            <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-                            <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
+                            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
                         </DisclosureButton>
                     </div>
                 </div>
@@ -81,12 +81,12 @@
 
 <script>
 import { reactive } from "vue";
-import { Inertia } from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import NavLink from "../Jetstream/NavLink.vue";
 import ResponsiveNavLink from "../Jetstream/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from '@inertiajs/vue3'
 
 const navigation = {
     main: [
@@ -106,7 +106,7 @@ export default {
         })
 
         function submit() {
-            Inertia.post('/player/search', {'username': form.username})
+            router.post('/player/search', {'username': form.username})
         }
 
         return { form, submit, navigation }
@@ -121,8 +121,8 @@ export default {
         MenuItem,
         MenuItems,
         BellIcon,
-        MenuIcon,
-        XIcon,
+        Bars3Icon,
+        XMarkIcon,
         NavLink,
         ResponsiveNavLink,
         Link

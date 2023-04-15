@@ -15,12 +15,12 @@ class UpdateEventsCommand extends Command
 
     protected $description = 'Used to update the events from the Fortnite API';
 
-    public function handle()
+    public function handle(): void
     {
         $this->updateFortniteEventInDB();
     }
 
-    private function updateFortniteEventInDB()
+    private function updateFortniteEventInDB(): void
     {
         Schema::disableForeignKeyConstraints();
         FortniteEvent::truncate();
@@ -33,7 +33,7 @@ class UpdateEventsCommand extends Command
         Schema::enableForeignKeyConstraints();
     }
 
-    private function storeFortniteEUEventInDB()
+    private function storeFortniteEUEventInDB(): void
     {
         $client = new Client();
 
@@ -79,7 +79,7 @@ class UpdateEventsCommand extends Command
         }
     }
 
-    private function storeFortniteNAEEventInDB()
+    private function storeFortniteNAEEventInDB(): void
     {
         $client = new Client();
 
@@ -125,7 +125,7 @@ class UpdateEventsCommand extends Command
         }
     }
 
-    private function storeFortniteNAWEventInDB()
+    private function storeFortniteNAWEventInDB(): void
     {
         $client = new Client();
 
@@ -171,7 +171,7 @@ class UpdateEventsCommand extends Command
         }
     }
 
-    private function storeFortniteASIAEventInDB()
+    private function storeFortniteASIAEventInDB(): void
     {
         $client = new Client();
 

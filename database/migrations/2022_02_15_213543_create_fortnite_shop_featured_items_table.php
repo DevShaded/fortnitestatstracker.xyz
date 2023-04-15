@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortniteShopFeaturedItemsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_shop_featured_items', function (Blueprint $table) {
             $table->id();
@@ -19,7 +19,7 @@ class CreateFortniteShopFeaturedItemsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('featured_items');
     }

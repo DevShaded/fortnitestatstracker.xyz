@@ -38,8 +38,6 @@ class FortnitePlayerDuoLifetime extends Model
 
     /**
      * Get the fortnite player that owns the duo lifetime stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

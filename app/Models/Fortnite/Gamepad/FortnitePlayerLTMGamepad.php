@@ -36,8 +36,6 @@ class FortnitePlayerLTMGamepad extends Model
 
     /**
      * Get the fortnite player that owns the LTM gamepad stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

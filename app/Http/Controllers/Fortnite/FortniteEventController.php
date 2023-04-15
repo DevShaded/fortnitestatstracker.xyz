@@ -38,22 +38,22 @@ class FortniteEventController extends Controller
         ]);
     }
 
-    public function event()
+    public function event(): void
     {
 
     }
 
-    public function search()
+    public function search(): void
     {
 
     }
 
-    public function update()
+    public function update(): void
     {
 
     }
 
-    private function storeFortniteEventInDB()
+    private function storeFortniteEventInDB(): void
     {
         $this->storeFortniteEUEventInDB();
         $this->storeFortniteNAEEventInDB();
@@ -61,7 +61,7 @@ class FortniteEventController extends Controller
         $this->storeFortniteASIAEventInDB();
     }
 
-    private function storeFortniteEUEventInDB()
+    private function storeFortniteEUEventInDB(): void
     {
         $client = new Client();
 
@@ -107,7 +107,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeFortniteNAEEventInDB()
+    private function storeFortniteNAEEventInDB(): void
     {
         $client = new Client();
 
@@ -153,7 +153,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeFortniteNAWEventInDB()
+    private function storeFortniteNAWEventInDB(): void
     {
         $client = new Client();
 
@@ -199,7 +199,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    private function storeFortniteASIAEventInDB()
+    private function storeFortniteASIAEventInDB(): void
     {
         $client = new Client();
 
