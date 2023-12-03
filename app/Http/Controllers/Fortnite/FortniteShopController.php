@@ -7,9 +7,11 @@ use App\Models\Fortnite\Shop\{CosmeticItem,
     FortniteShopDailyItem,
     FortniteShopFeaturedItem,
     FortniteShopSpecialDailyItem,
-    FortniteShopSpecialFeaturedItem};
+    FortniteShopSpecialFeaturedItem
+};
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\{RedirectResponse, Request};
 use Inertia\{Inertia, Response};
 
@@ -22,19 +24,28 @@ class FortniteShopController extends Controller
      */
     public function index(): Response
     {
-        $dailyItemShop = FortniteShopDailyItem::all();
+        $dailyItemShop = Cache::remember('dailyItemShop', 3600, function () {
+            return FortniteShopDailyItem::all();
+        });
 
-        if ($dailyItemShop->isEmpty()) {
+        $featuredItemShop = Cache::remember('featuredItemShop', 3600, function () {
+            return FortniteShopFeaturedItem::all();
+        });
+
+        if (!$dailyItemShop || !$featuredItemShop) {
             $this->storeItemShopFromAPI();
-            return $this->index();
+            $dailyItemShop = FortniteShopDailyItem::all();
+            $featuredItemShop = FortniteShopFeaturedItem::all();
+            Cache::put('dailyItemShop', $dailyItemShop, 3600);
+            Cache::put('featuredItemShop', $featuredItemShop, 3600);
         }
 
         $data = [
             'item_shop' => [
                 'daily' => $dailyItemShop,
-                'featured' => FortniteShopFeaturedItem::all(),
-                'special_featured' => FortniteShopSpecialFeaturedItem::all() ?? null,
-                'special_daily' => FortniteShopSpecialDailyItem::all() ?? null,
+                'featured' => $featuredItemShop,
+                'special_featured' => null,
+                'special_daily' => null,
             ],
         ];
 
@@ -49,39 +60,44 @@ class FortniteShopController extends Controller
      *
      * @throws GuzzleException
      */
-    public function cosmetic(string $cosmeticID): Response | RedirectResponse
+    public function cosmetic(string $cosmeticID): Response|RedirectResponse
     {
-        $cosmeticUUID = CosmeticItem::where('cosmetic_id', $cosmeticID)->first();
+        $cosmeticUUID = Cache::get('cosmeticUUID:' . $cosmeticID);
 
         if (!$cosmeticUUID) {
-            $cosmeticUUID = $this->getCosmeticFromAPI($cosmeticID);
+            $cosmeticUUID = CosmeticItem::where('cosmetic_id', $cosmeticID)->first();
 
             if (!$cosmeticUUID) {
-                return redirect()->to('/shop')->withErrors(['This cosmetic does not exist.']);
-            } else {
-                $this->storeCosmeticInDB($cosmeticUUID);
-                return $this->cosmetic($cosmeticID);
-            }
-        }
+                $cosmeticUUID = $this->getCosmeticFromAPI($cosmeticID);
 
-        $cosmetic = CosmeticItem::where('cosmetic_id', $cosmeticID)->get();
+                if (!$cosmeticUUID) {
+                    return redirect()->to('/shop')->withErrors(['This cosmetic does not exist.']);
+                } else {
+                    $this->storeCosmeticInDB($cosmeticUUID);
+                    return $this->cosmetic($cosmeticID);
+                }
+            }
+
+            Cache::put('cosmeticUUID:' . $cosmeticID, $cosmeticUUID, 3600);
+            return $this->cosmetic($cosmeticID);
+        }
 
         $data = [
             'cosmetic' => [
-                'id'            => $cosmetic[0]->cosmetic_id,
-                'name'          => $cosmetic[0]->name,
-                'description'   => $cosmetic[0]->description,
-                'cosmetic_type' => $cosmetic[0]->cosmetic_type,
-                'rarity'        => $cosmetic[0]->rarity,
-                'price'         => $cosmetic[0]->price,
-                'image'         => $cosmetic[0]->image,
-                'release_date'  => $cosmetic[0]->release_date,
-                'interest'      => $cosmetic[0]->interest,
-                'set'           => $cosmetic[0]->set,
-                'intro_chapter' => $cosmetic[0]->intro_chapter,
-                'intro_season'  => $cosmetic[0]->intro_season,
-                'intro_text'    => $cosmetic[0]->intro_text,
-                'updated_at'    => $cosmetic[0]->updated_at,
+                'id' => $cosmeticUUID->cosmetic_id,
+                'name' => $cosmeticUUID->name,
+                'description' => $cosmeticUUID->description,
+                'cosmetic_type' => $cosmeticUUID->cosmetic_type,
+                'rarity' => $cosmeticUUID->rarity,
+                'price' => $cosmeticUUID->price,
+                'image' => $cosmeticUUID->image,
+                'release_date' => $cosmeticUUID->release_date,
+                'interest' => $cosmeticUUID->interest,
+                'set' => $cosmeticUUID->set,
+                'intro_chapter' => $cosmeticUUID->intro_chapter,
+                'intro_season' => $cosmeticUUID->intro_season,
+                'intro_text' => $cosmeticUUID->intro_text,
+                'updated_at' => $cosmeticUUID->updated_at,
             ],
         ];
 
@@ -107,7 +123,7 @@ class FortniteShopController extends Controller
      *
      * @throws GuzzleException
      */
-    private function getCosmeticFromAPI(string $cosmeticID): string | bool
+    private function getCosmeticFromAPI(string $cosmeticID): string|bool
     {
         $client = new Client();
 
@@ -145,19 +161,19 @@ class FortniteShopController extends Controller
 
         if ($data['result']) {
             CosmeticItem::insertOrIgnore([
-                'cosmetic_id'   => $data['item']['id'],
-                'name'          => $data['item']['name'],
-                'description'   => $data['item']['description'],
+                'cosmetic_id' => $data['item']['id'],
+                'name' => $data['item']['name'],
+                'description' => $data['item']['description'],
                 'cosmetic_type' => $data['item']['type']['name'],
-                'rarity'        => $data['item']['rarity']['id'],
-                'price'         => $data['item']['price'],
-                'image'         => $data['item']['images']['icon_background'],
-                'release_date'  => $data['item']['releaseDate'],
-                'interest'      => $data['item']['interest'],
-                'set'           => $data['item']['set']['partOf'] ?? null,
+                'rarity' => $data['item']['rarity']['id'],
+                'price' => $data['item']['price'],
+                'image' => $data['item']['images']['icon_background'],
+                'release_date' => $data['item']['releaseDate'],
+                'interest' => $data['item']['interest'],
+                'set' => $data['item']['set']['partOf'] ?? null,
                 'intro_chapter' => $data['item']['introduction']['chapter'],
-                'intro_season'  => $data['item']['introduction']['season'],
-                'intro_text'    => $data['item']['introduction']['text'],
+                'intro_season' => $data['item']['introduction']['season'],
+                'intro_text' => $data['item']['introduction']['text'],
             ]);
         }
     }
@@ -169,6 +185,8 @@ class FortniteShopController extends Controller
      */
     private function updateCosmeticInDB(string $cosmeticID): void
     {
+        Cache::forget('cosmeticUUID:' . $cosmeticID);
+
         $client = new Client();
 
         $response = $client->request('GET', 'https://fortniteapi.io/v2/items/get?id=' . $cosmeticID, [
@@ -181,20 +199,20 @@ class FortniteShopController extends Controller
 
         if ($data['result']) {
             CosmeticItem::where('cosmetic_id', $cosmeticID)
-                        ->update([
-                            'name'          => $data['item']['name'],
-                            'description'   => $data['item']['description'],
-                            'cosmetic_type' => $data['item']['type']['name'],
-                            'rarity'        => $data['item']['rarity']['id'],
-                            'price'         => $data['item']['price'],
-                            'image'         => $data['item']['images']['icon_background'],
-                            'release_date'  => $data['item']['releaseDate'],
-                            'interest'      => $data['item']['interest'],
-                            'set'           => $data['item']['set']['partOf'] ?? null,
-                            'intro_chapter' => $data['item']['introduction']['chapter'],
-                            'intro_season'  => $data['item']['introduction']['season'],
-                            'intro_text'    => $data['item']['introduction']['text'],
-                        ]);
+                ->update([
+                    'name' => $data['item']['name'],
+                    'description' => $data['item']['description'],
+                    'cosmetic_type' => $data['item']['type']['name'],
+                    'rarity' => $data['item']['rarity']['id'],
+                    'price' => $data['item']['price'],
+                    'image' => $data['item']['images']['icon_background'],
+                    'release_date' => $data['item']['releaseDate'],
+                    'interest' => $data['item']['interest'],
+                    'set' => $data['item']['set']['partOf'] ?? null,
+                    'intro_chapter' => $data['item']['introduction']['chapter'],
+                    'intro_season' => $data['item']['introduction']['season'],
+                    'intro_text' => $data['item']['introduction']['text'],
+                ]);
         }
     }
 
@@ -233,10 +251,10 @@ class FortniteShopController extends Controller
 
             if ($response['data']['daily']) {
                 foreach ($response['data']['daily']['entries'] as $item) {
-                    FortniteShopDailyItem::create([
-                        'item_id'         => $item['items'][0]['id'] ?? null,
-                        'item_name'       => $item['items'][0]['name'],
-                        'item_price'      => $item['finalPrice'],
+                    FortniteShopDailyItem::updateOrCreate([
+                        'item_id' => $item['items'][0]['id'] ?? null,
+                        'item_name' => $item['items'][0]['name'],
+                        'item_price' => $item['finalPrice'],
                         'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background']
                     ]);
                 }
@@ -245,33 +263,11 @@ class FortniteShopController extends Controller
 
             if ($response['data']['featured']) {
                 foreach ($response['data']['featured']['entries'] as $item) {
-                    FortniteShopFeaturedItem::create([
-                        'item_id'         => $item['items'][0]['id'] ?? null,
-                        'item_name'       => $item['items'][0]['name'],
-                        'item_price'      => $item['finalPrice'],
-                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
-                    ]);
-                }
-            }
-
-            if ($response['data']['specialFeatured']) {
-                foreach ($response['data']['specialFeatured']['entries'] as $item) {
-                    FortniteShopSpecialFeaturedItem::create([
-                        'item_id'         => $item['items'][0]['id'] ?? null,
-                        'item_name'       => $item['items'][0]['name'],
-                        'item_price'      => $item['finalPrice'],
-                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
-                    ]);
-                }
-            }
-
-            if ($response['data']['specialDaily']) {
-                foreach ($response['data']['specialDaily']['entries'] as $item) {
-                    FortniteShopSpecialDailyItem::create([
-                        'item_id'         => $item['items'][0]['id'] ?? null,
-                        'item_name'       => $item['items'][0]['name'],
-                        'item_price'      => $item['finalPrice'],
-                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? null
+                    FortniteShopFeaturedItem::updateOrCreate([
+                        'item_id' => $item['items'][0]['id'] ?? null,
+                        'item_name' => $item['items'][0]['name'],
+                        'item_price' => $item['finalPrice'],
+                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background']
                     ]);
                 }
             }
