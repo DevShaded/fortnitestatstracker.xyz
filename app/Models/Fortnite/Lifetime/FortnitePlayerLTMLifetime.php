@@ -36,8 +36,6 @@ class FortnitePlayerLTMLifetime extends Model
 
     /**
      * Get the fortnite player that owns the LTM lifetime stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

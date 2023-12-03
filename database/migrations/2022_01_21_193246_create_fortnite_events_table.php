@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortniteEventsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_events', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -25,7 +25,7 @@ class CreateFortniteEventsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('fortnite_events');
     }

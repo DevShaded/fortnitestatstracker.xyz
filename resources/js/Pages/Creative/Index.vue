@@ -47,7 +47,7 @@
 
 <script>
 import AppLayout from "../../Layouts/AppLayout.vue";
-import { Link, Head } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/vue3";
 import moment from "moment";
 import CreativeSearch from "../../Components/CreativeSearch.vue";
 import axios from "axios";

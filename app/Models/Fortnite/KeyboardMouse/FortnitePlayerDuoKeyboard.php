@@ -38,8 +38,6 @@ class FortnitePlayerDuoKeyboard extends Model
 
     /**
      * Get the fortnite player that owns the duo keyboard&mouse stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

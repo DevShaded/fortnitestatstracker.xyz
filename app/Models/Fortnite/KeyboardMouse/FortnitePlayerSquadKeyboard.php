@@ -38,8 +38,6 @@ class FortnitePlayerSquadKeyboard extends Model
 
     /**
      * Get the fortnite player that owns the squad keyboard&mouse stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

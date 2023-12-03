@@ -15,7 +15,7 @@ class FortniteNewsController extends Controller
      *
      * @throws GuzzleException
      */
-    public function index()
+    public function index(): ?object
     {
         $client = new Client();
 
@@ -55,7 +55,7 @@ class FortniteNewsController extends Controller
      * Get the current Fortnite Save the World news
      *
      */
-    private function getSTWNews()
+    private function getSTWNews(): ?object
     {
         try {
             $client = new Client();
@@ -80,7 +80,7 @@ class FortniteNewsController extends Controller
      * Get the current Fortnite Creative Island news
      *
      */
-    private function getCreativeIslandNews()
+    private function getCreativeIslandNews(): ?object
     {
         try {
             $client = new Client();

@@ -38,8 +38,6 @@ class FortnitePlayerSquadGamepad extends Model
 
     /**
      * Get the fortnite player that owns the squad gamepad stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

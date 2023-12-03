@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortniteShopDailyItemsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_shop_daily_items', function (Blueprint $table) {
             $table->id();
@@ -19,7 +19,7 @@ class CreateFortniteShopDailyItemsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('daily_items');
     }

@@ -13,7 +13,7 @@
 
 <script>
 import { reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
+import { router } from '@inertiajs/vue3'
 
 export default {
     name: "CreativeSearch",
@@ -24,7 +24,7 @@ export default {
         })
 
         function submit() {
-            Inertia.post('/creative/search', form)
+            router.post('/creative/search', form)
         }
 
         return { form, submit }

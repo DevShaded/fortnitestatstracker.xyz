@@ -38,8 +38,6 @@ class FortnitePlayerSquadLifetime extends Model
 
     /**
      * Get the fortnite player that owns the squad lifetime stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {

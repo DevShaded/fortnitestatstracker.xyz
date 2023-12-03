@@ -38,25 +38,22 @@ class FortniteEventController extends Controller
         ]);
     }
 
-    public function event()
+    public function event(): void
     {
 
     }
 
-    public function search()
+    public function search(): void
     {
 
     }
 
-    public function update()
+    public function update(): void
     {
 
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function storeFortniteEventInDB()
+    private function storeFortniteEventInDB(): void
     {
         $this->storeFortniteEUEventInDB();
         $this->storeFortniteNAEEventInDB();
@@ -64,10 +61,7 @@ class FortniteEventController extends Controller
         $this->storeFortniteASIAEventInDB();
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function storeFortniteEUEventInDB()
+    private function storeFortniteEUEventInDB(): void
     {
         $client = new Client();
 
@@ -79,7 +73,7 @@ class FortniteEventController extends Controller
 
         $data = json_decode($responseEU->getBody(), true);
 
-        if (isset($data['result'])) {
+        if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
                 $fortniteEvent = new FortniteEvent();
                 $fortniteEvent->event_id = $event['id'];
@@ -113,10 +107,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function storeFortniteNAEEventInDB()
+    private function storeFortniteNAEEventInDB(): void
     {
         $client = new Client();
 
@@ -128,7 +119,7 @@ class FortniteEventController extends Controller
 
         $data = json_decode($responseEU->getBody(), true);
 
-        if (isset($data['result'])) {
+        if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
                 $fortniteEvent = new FortniteEvent();
                 $fortniteEvent->event_id = $event['id'];
@@ -162,10 +153,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function storeFortniteNAWEventInDB()
+    private function storeFortniteNAWEventInDB(): void
     {
         $client = new Client();
 
@@ -177,7 +165,7 @@ class FortniteEventController extends Controller
 
         $data = json_decode($responseEU->getBody(), true);
 
-        if (isset($data['result'])) {
+        if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
                 $fortniteEvent = new FortniteEvent();
                 $fortniteEvent->event_id = $event['id'];
@@ -211,10 +199,7 @@ class FortniteEventController extends Controller
         }
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function storeFortniteASIAEventInDB()
+    private function storeFortniteASIAEventInDB(): void
     {
         $client = new Client();
 
@@ -226,7 +211,7 @@ class FortniteEventController extends Controller
 
         $data = json_decode($responseEU->getBody(), true);
 
-        if (isset($data['result'])) {
+        if (isset($data['result']) == true) {
             foreach ($data['events'] as $event) {
                 $fortniteEvent = new FortniteEvent();
                 $fortniteEvent->event_id = $event['id'];

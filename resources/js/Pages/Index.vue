@@ -182,7 +182,7 @@
 <script>
 import AppLayout from "../Layouts/AppLayout.vue";
 import FortniteNews from "../Components/FortniteNews.vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import axios from "axios";
 import Button from "../Jetstream/Button.vue";
 

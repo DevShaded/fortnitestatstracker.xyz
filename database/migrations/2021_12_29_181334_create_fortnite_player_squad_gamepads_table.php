@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortnitePlayerSquadGamepadsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_player_squad_gamepads', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -33,7 +33,7 @@ class CreateFortnitePlayerSquadGamepadsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('fortnite_player_squad_gamepads');
     }

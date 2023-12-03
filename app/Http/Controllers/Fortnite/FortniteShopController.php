@@ -47,11 +47,9 @@ class FortniteShopController extends Controller
      * Retrieve the cosmetic from the database if possible, otherwise try pulling the cosmetic from the API
      * Then return to the cosmetic with the data to the view
      *
-     * @param $cosmeticID
-     * @return Response|RedirectResponse
      * @throws GuzzleException
      */
-    public function cosmetic($cosmeticID): Response | RedirectResponse
+    public function cosmetic(string $cosmeticID): Response | RedirectResponse
     {
         $cosmeticUUID = CosmeticItem::where('cosmetic_id', $cosmeticID)->first();
 
@@ -95,10 +93,9 @@ class FortniteShopController extends Controller
     /**
      * Get the cosmetic_id key from the post request and use it to update the cosmetic in the database
      *
-     * @param Request $request
      * @throws GuzzleException
      */
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         $cosmeticID = $request->get('cosmetic_id');
 
@@ -108,11 +105,9 @@ class FortniteShopController extends Controller
     /**
      * Try to retrieve the cosmetic from the API and return the cosmetic ID if possible, return false otherwise
      *
-     * @param $cosmeticID
-     * @return false|mixed
      * @throws GuzzleException
      */
-    private function getCosmeticFromAPI($cosmeticID): mixed
+    private function getCosmeticFromAPI(string $cosmeticID): string | bool
     {
         $client = new Client();
 
@@ -134,11 +129,9 @@ class FortniteShopController extends Controller
     /**
      * Store the cosmetic in the database that we get from the API
      *
-     * @param $cosmeticID
-     * @return void
      * @throws GuzzleException
      */
-    private function storeCosmeticInDB($cosmeticID)
+    private function storeCosmeticInDB(string $cosmeticID): void
     {
         $client = new Client();
 
@@ -172,11 +165,9 @@ class FortniteShopController extends Controller
     /**
      * Update the cosmetic in the database that we get from the API
      *
-     * @param $cosmeticID
-     * @return void
      * @throws GuzzleException
      */
-    private function updateCosmeticInDB($cosmeticID)
+    private function updateCosmeticInDB(string $cosmeticID): void
     {
         $client = new Client();
 
@@ -210,7 +201,7 @@ class FortniteShopController extends Controller
     /**
      * @throws GuzzleException
      */
-    public function getCurrentShopWithAPI()
+    public function getCurrentShopWithAPI(): ?object
     {
         $client = new Client();
 
@@ -226,7 +217,7 @@ class FortniteShopController extends Controller
     /**
      * @throws GuzzleException
      */
-    private function storeItemShopFromAPI()
+    private function storeItemShopFromAPI(): void
     {
         $client = new Client();
 

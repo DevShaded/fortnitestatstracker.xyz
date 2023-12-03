@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFortniteEventWindowsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('fortnite_event_windows', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -21,7 +21,7 @@ class CreateFortniteEventWindowsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('fortnite_event_windows');
     }

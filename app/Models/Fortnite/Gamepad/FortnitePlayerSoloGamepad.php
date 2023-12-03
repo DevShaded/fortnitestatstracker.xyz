@@ -38,8 +38,6 @@ class FortnitePlayerSoloGamepad extends Model
 
     /**
      * Get the fortnite player that owns the solo gamepad stats
-     *
-     * @return BelongsTo
      */
     public function fortnitePlayer(): BelongsTo
     {
