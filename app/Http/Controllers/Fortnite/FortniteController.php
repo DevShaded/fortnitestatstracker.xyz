@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Fortnite\FortniteService;
 use App\Http\Services\Fortnite\Player\FortnitePlayerService;
 use App\Http\Services\Fortnite\Player\Stats\Update\PlayerUpdateService;
 use App\Models\Fortnite\Lifetime\FortnitePlayerOverallLifetime;
@@ -16,23 +17,9 @@ class FortniteController extends Controller
      */
     public function index(): Response
     {
-        $highestKD = FortnitePlayerOverallLifetime::with('fortnitePlayer')
-                                                  ->orderBy('kd', 'DESC')
-                                                  ->select(['account_id', 'kd'])
-                                                  ->limit(1)
-                                                  ->first();
-
-        $mostWins = FortnitePlayerOverallLifetime::with('fortnitePlayer')
-                                                 ->orderBy('wins', 'DESC')
-                                                 ->select(['account_id', 'wins'])
-                                                 ->limit(1)
-                                                 ->first();
-
-        $highestWinrate = FortnitePlayerOverallLifetime::with('fortnitePlayer')
-                                                       ->orderBy('winRate', 'DESC')
-                                                       ->select(['account_id', 'winRate'])
-                                                       ->limit(1)
-                                                       ->first();
+        $highestKD = FortniteService::getHighestKDPlayer();
+        $mostWins = FortniteService::getMostWinsPlayer();
+        $highestWinrate = FortniteService::getHighestWinratePlayer();
 
         if ($highestKD == null || $mostWins == null || $highestWinrate == null) {
             return Inertia::render('Index', [
@@ -104,6 +91,16 @@ class FortniteController extends Controller
     {
         $username = $request->get('username');
 
-        return PlayerUpdateService::updatePlayer($username);
+        $playerUpdate = PlayerUpdateService::updatePlayer($username);
+
+        if ($playerUpdate === 404) {
+            return redirect()->to('/')->withErrors(['User "' . $username . '" could not be found!']);
+        } elseif ($playerUpdate === 403) {
+            return redirect()->to('/')->withErrors(['User "' . $username . '" has set their stats to private!']);
+        } elseif ($playerUpdate === 500) {
+            return redirect()->to('/')->withErrors(['An error occurred while updating the stats for "' . $username . '"!']);
+        }
+
+        return null;
     }
 }
