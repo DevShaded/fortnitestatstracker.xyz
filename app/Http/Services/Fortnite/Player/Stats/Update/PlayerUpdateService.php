@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Cache;
 
 class PlayerUpdateService
 {
-    public static function updatePlayer(string $username): \Illuminate\Http\RedirectResponse|null
+    public static function updatePlayer(string $username): int|null
     {
         Cache::forget('player:' . $username);
         $currentTime = date('Y-m-d H:i:s');
@@ -19,11 +19,11 @@ class PlayerUpdateService
 
         switch ($playerId) {
             case 404:
-                return redirect()->to('/')->withErrors(['User "' . $username . '" could not be found!']);
+                return 404;
             case 403:
-                return redirect()->to('/')->withErrors(['User "' . $username . '" has set their stats to private!']);
+                return 403;
             case 500:
-                return redirect()->to('/')->withErrors(['An error occurred while trying to update the stats for "' . $username . '"!']);
+                return 500;
         }
 
         $stats = Cache::get('playerStats:' . $playerId);
