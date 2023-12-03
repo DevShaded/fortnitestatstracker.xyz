@@ -223,8 +223,8 @@ export default {
         getCurrentShop() {
             axios.get('/api/fortnite/shop')
                 .then(response => {
-                    this.dailyItems = response.data.data.daily.entries;
-                    this.featruedItems = response.data.data.featured.entries;
+                    response.data.data.daily ? this.dailyItems = response.data.data.daily.entries : this.dailyItems = null;
+                    response.data.data.featured ? this.featruedItems = response.data.data.featured.entries : this.featruedItems = null;
                 });
         }
     },
