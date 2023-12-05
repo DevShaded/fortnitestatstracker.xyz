@@ -5,13 +5,7 @@ namespace App\Http\Controllers\Fortnite;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Fortnite\API\FortniteAPIService;
 use App\Http\Services\Fortnite\Shop\FortniteShopService;
-use App\Models\Fortnite\Shop\{CosmeticItem,
-    FortniteShopDailyItem,
-    FortniteShopFeaturedItem,
-    FortniteShopSpecialDailyItem,
-    FortniteShopSpecialFeaturedItem
-};
-use GuzzleHttp\Client;
+use App\Models\Fortnite\Shop\{CosmeticItem,};
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\{RedirectResponse, Request};
