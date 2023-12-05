@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Fortnite\API\FortniteAPIService;
+use App\Http\Services\Fortnite\Shop\FortniteShopService;
 use App\Models\Fortnite\Shop\{CosmeticItem,
     FortniteShopDailyItem,
     FortniteShopFeaturedItem,
@@ -24,28 +26,19 @@ class FortniteShopController extends Controller
      */
     public function index(): Response
     {
-        $dailyItemShop = Cache::remember('dailyItemShop', 3600, function () {
-            return FortniteShopDailyItem::all();
-        });
+        $dailyItemShop = FortniteShopService::getDailyItemShop();
+        $featuredItemShop = FortniteShopService::getFeaturedItemShop();
 
-        $featuredItemShop = Cache::remember('featuredItemShop', 3600, function () {
-            return FortniteShopFeaturedItem::all();
-        });
-
-        if (!$dailyItemShop || !$featuredItemShop) {
-            $this->storeItemShopFromAPI();
-            $dailyItemShop = FortniteShopDailyItem::all();
-            $featuredItemShop = FortniteShopFeaturedItem::all();
-            Cache::put('dailyItemShop', $dailyItemShop, 3600);
-            Cache::put('featuredItemShop', $featuredItemShop, 3600);
+        if (count($dailyItemShop) === 0 && count($featuredItemShop) === 0) {
+            FortniteShopService::updateItemShop();
         }
 
         $data = [
             'item_shop' => [
                 'daily' => $dailyItemShop,
                 'featured' => $featuredItemShop,
-                'special_featured' => null,
-                'special_daily' => null,
+                'special_featured' => null, // Does not exist anymore
+                'special_daily' => null, // Does not exist anymore
             ],
         ];
 
@@ -73,7 +66,7 @@ class FortniteShopController extends Controller
                 if (!$cosmeticUUID) {
                     return redirect()->to('/shop')->withErrors(['This cosmetic does not exist.']);
                 } else {
-                    $this->storeCosmeticInDB($cosmeticUUID);
+                    FortniteShopService::storeCosmeticInDB($cosmeticUUID);
                     return $this->cosmetic($cosmeticID);
                 }
             }
@@ -125,56 +118,12 @@ class FortniteShopController extends Controller
      */
     private function getCosmeticFromAPI(string $cosmeticID): string|bool
     {
-        $client = new Client();
-
-        $response = $client->request('GET', 'https://fortniteapi.io/v2/items/get?id=' . $cosmeticID, [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key_io')
-            ]
-        ]);
-
-        $data = json_decode($response->getBody(), true);
+        $data = FortniteAPIService::getCosmeticByID($cosmeticID);
 
         if ($data['result']) {
             return $data['item']['id'];
         } else {
             return false;
-        }
-    }
-
-    /**
-     * Store the cosmetic in the database that we get from the API
-     *
-     * @throws GuzzleException
-     */
-    private function storeCosmeticInDB(string $cosmeticID): void
-    {
-        $client = new Client();
-
-        $response = $client->request('GET', 'https://fortniteapi.io/v2/items/get?id=' . $cosmeticID, [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key_io')
-            ]
-        ]);
-
-        $data = json_decode($response->getBody(), true);
-
-        if ($data['result']) {
-            CosmeticItem::insertOrIgnore([
-                'cosmetic_id' => $data['item']['id'],
-                'name' => $data['item']['name'],
-                'description' => $data['item']['description'],
-                'cosmetic_type' => $data['item']['type']['name'],
-                'rarity' => $data['item']['rarity']['id'],
-                'price' => $data['item']['price'],
-                'image' => $data['item']['images']['icon_background'],
-                'release_date' => $data['item']['releaseDate'],
-                'interest' => $data['item']['interest'],
-                'set' => $data['item']['set']['partOf'] ?? null,
-                'intro_chapter' => $data['item']['introduction']['chapter'],
-                'intro_season' => $data['item']['introduction']['season'],
-                'intro_text' => $data['item']['introduction']['text'],
-            ]);
         }
     }
 
@@ -187,15 +136,7 @@ class FortniteShopController extends Controller
     {
         Cache::forget('cosmeticUUID:' . $cosmeticID);
 
-        $client = new Client();
-
-        $response = $client->request('GET', 'https://fortniteapi.io/v2/items/get?id=' . $cosmeticID, [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key_io')
-            ]
-        ]);
-
-        $data = json_decode($response->getBody(), true);
+        $data = FortniteAPIService::getCosmeticByID($cosmeticID);
 
         if ($data['result']) {
             CosmeticItem::where('cosmetic_id', $cosmeticID)
@@ -219,58 +160,8 @@ class FortniteShopController extends Controller
     /**
      * @throws GuzzleException
      */
-    public function getCurrentShopWithAPI(): ?object
+    public function getCurrentShopWithAPI(): ?array
     {
-        $client = new Client();
-
-        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key')
-            ]
-        ]);
-
-        return json_decode($response->getBody());
-    }
-
-    /**
-     * @throws GuzzleException
-     */
-    private function storeItemShopFromAPI(): void
-    {
-        $client = new Client();
-
-        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
-            'headers' => [
-                'Authorization' => config('services.fortnite.api.key')
-            ]
-        ]);
-
-        $response = json_decode($response->getBody(), true);
-
-        if ($response['status'] === 200) {
-
-            if ($response['data']['daily']) {
-                foreach ($response['data']['daily']['entries'] as $item) {
-                    FortniteShopDailyItem::updateOrCreate([
-                        'item_id' => $item['items'][0]['id'] ?? null,
-                        'item_name' => $item['items'][0]['name'],
-                        'item_price' => $item['finalPrice'],
-                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background']
-                    ]);
-                }
-            }
-
-
-            if ($response['data']['featured']) {
-                foreach ($response['data']['featured']['entries'] as $item) {
-                    FortniteShopFeaturedItem::updateOrCreate([
-                        'item_id' => $item['items'][0]['id'] ?? null,
-                        'item_name' => $item['items'][0]['name'],
-                        'item_price' => $item['finalPrice'],
-                        'item_background' => $item['newDisplayAsset']['materialInstances'][0]['images']['Background']
-                    ]);
-                }
-            }
-        }
+        return FortniteAPIService::getCurrentShop();
     }
 }

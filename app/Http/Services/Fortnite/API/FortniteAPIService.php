@@ -40,4 +40,36 @@ class FortniteAPIService
 
         return json_decode($response->getBody(), true);
     }
+
+    /**
+     * @throws GuzzleException
+     */
+    public static function getCosmeticByID(string $cosmeticID): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortniteapi.io/v2/items/get?id=' . $cosmeticID, [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key_io')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public static function getCurrentShop(): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/shop/br', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
 }
