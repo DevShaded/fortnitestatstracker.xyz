@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Fortnite;
 
-use App\Console\Services\FortniteEventService;
+use App\Console\Services\Event\FortniteEventService;
 use App\Http\Controllers\Controller;
-use App\Models\Fortnite\Events\FortniteEvent;
-use App\Models\Fortnite\Events\FortniteEventPlatform;
-use App\Models\Fortnite\Events\FortniteEventWindow;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;

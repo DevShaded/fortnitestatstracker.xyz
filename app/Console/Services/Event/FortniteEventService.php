@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Console\Services;
+namespace App\Console\Services\Event;
 
 use App\Http\Services\Fortnite\API\FortniteAPIService;
 use App\Models\Fortnite\Events\FortniteEvent;
 use App\Models\Fortnite\Events\FortniteEventPlatform;
 use App\Models\Fortnite\Events\FortniteEventWindow;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Support\Facades\Cache;
 
 class FortniteEventService
 {

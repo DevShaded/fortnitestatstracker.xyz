@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Console\Services\FortniteEventService;
+use App\Console\Services\Event\FortniteEventService;
 use App\Models\Fortnite\Events\{FortniteEvent, FortniteEventPlatform, FortniteEventWindow};
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
