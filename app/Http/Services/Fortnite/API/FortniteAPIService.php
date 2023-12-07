@@ -89,4 +89,43 @@ class FortniteAPIService
 
         return json_decode($response->getBody(), true);
     }
+
+    public static function getCurrentFortniteBRNews(): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/news/br', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public static function getCurrentFortniteSTWNews(): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/news/stw', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public static function getCurrentFortniteCreativeIslandNews(): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/news/creative', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
 }
