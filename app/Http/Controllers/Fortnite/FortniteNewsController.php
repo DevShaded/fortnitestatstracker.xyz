@@ -33,13 +33,13 @@ class FortniteNewsController extends Controller
     public function news(): Response
     {
         $stwNews = FortniteAPIService::getCurrentFortniteSTWNews();
-        $creativeNews = FortniteAPIService::getCurrentFortniteCreativeIslandNews();
+//        $creativeNews = FortniteAPIService::getCurrentFortniteCreativeIslandNews();
 
         $data = [
             'category' => [
                 'br'       => $this->index(),
                 'stw'      => $stwNews['status'] === 200 ? $stwNews['data'] : null,
-                'creative' => $creativeNews['status'] === 200 ? $creativeNews['data'] : null,
+                'creative' => null, // endpoint does not work anymore, and its deprecated
             ],
         ];
 
