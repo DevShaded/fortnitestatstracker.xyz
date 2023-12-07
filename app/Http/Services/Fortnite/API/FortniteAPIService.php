@@ -128,4 +128,17 @@ class FortniteAPIService
 
         return json_decode($response->getBody(), true);
     }
+
+    public static function getFeaturedCreativeIsland(): ?array
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortnite-api.com/v2/creative/featured', [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
 }

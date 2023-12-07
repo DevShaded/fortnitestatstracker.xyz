@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Fortnite\Creative\FortniteCreativeService;
 use App\Models\Fortnite\Creative\CreativeFeatureIsland;
 use App\Models\Fortnite\Creative\CreativeIsland;
 use GuzzleHttp\Client;
@@ -23,7 +24,7 @@ class FortniteCreativeController extends Controller
     public function index(): Response
     {
         // get all the fortnite creative
-        $fortniteCreatives = CreativeFeatureIsland::all();
+        $fortniteCreatives = FortniteCreativeService::getCreativeIslands();
 
         // if there are no fortnite creatives
         if ($fortniteCreatives->isEmpty()) {
