@@ -72,4 +72,21 @@ class FortniteAPIService
 
         return json_decode($response->getBody(), true);
     }
+
+    /**
+     * @throws GuzzleException
+     * Regions: NAE, NAW, ASIA, EU
+     */
+    public static function getCurrentEventsByRegion(string $region)
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://fortniteapi.io/v1/events/list?lang=en&season=current&region=' . $region, [
+            'headers' => [
+                'Authorization' => config('services.fortnite.api.key_io')
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
 }
