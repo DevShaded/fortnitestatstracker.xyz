@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Fortnite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Fortnite\Creative\FortniteCreativeService;
 use App\Models\Fortnite\Creative\CreativeFeatureIsland;
 use App\Models\Fortnite\Creative\CreativeIsland;
 use GuzzleHttp\Client;
@@ -23,7 +24,7 @@ class FortniteCreativeController extends Controller
     public function index(): Response
     {
         // get all the fortnite creative
-        $fortniteCreatives = CreativeFeatureIsland::all();
+        $fortniteCreatives = FortniteCreativeService::getCreativeIslands();
 
         // if there are no fortnite creatives
         if ($fortniteCreatives->isEmpty()) {
@@ -139,7 +140,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             foreach ($data['featured'] as $creative) {
                 $creativeFeatureIsland = new CreativeFeatureIsland();
                 $creativeFeatureIsland->island_code = $creative['code'];
@@ -170,7 +171,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if (isset($data['result']) == true) {
+        if (isset($data['result'])) {
             return $data['island']['code'];
         } else {
             return false;
@@ -194,7 +195,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             $creativeIsland = new CreativeIsland();
             $creativeIsland->island_code = $data['island']['code'];
             $creativeIsland->island_name = $data['island']['title'];
@@ -222,7 +223,7 @@ class FortniteCreativeController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['result'] == true) {
+        if ($data['result']) {
             CreativeIsland::where('island_code', $code)
                           ->update([
                               'island_name'        => $data['island']['title'],
