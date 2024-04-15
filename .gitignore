@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/build
+/public/vendor
 /storage/*.key
 /storage/ssr
 /bootstrap/ssr
