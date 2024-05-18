@@ -14,8 +14,7 @@ class CreateFortniteEventWindowsTable extends Migration
             $table->string('window_id');
             $table->string('begin_time');
             $table->string('end_time');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->foreign('event_id')->references('event_id')->on('fortnite_events')->cascadeOnDelete();
         });

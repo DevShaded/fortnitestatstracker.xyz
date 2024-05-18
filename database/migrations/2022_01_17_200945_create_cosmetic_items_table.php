@@ -23,8 +23,7 @@ class CreateCosmeticItemsTable extends Migration
             $table->string('intro_chapter');
             $table->string('intro_season');
             $table->string('intro_text');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

@@ -30,8 +30,7 @@ class CreateFortnitePlayerOverallGamepadsTable extends Migration
             $table->float('winRate', 22,2);
             $table->unsignedBigInteger('minutesPlayed');
             $table->unsignedBigInteger('playersOutLived');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->foreign('account_id')->references('account_id')->on('fortnite_players')->cascadeOnDelete();
         });
