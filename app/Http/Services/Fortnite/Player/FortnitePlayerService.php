@@ -68,7 +68,7 @@ class FortnitePlayerService
                 'username'   => $playerStats['data']['account']['name'],
                 'level'      => $playerStats['data']['battlePass']['level'],
                 'progress'   => $playerStats['data']['battlePass']['progress'],
-                'image'      => $playerStats['data']['image']
+                'image'      => $playerStats['data']['image'] ?? null,
             ]);
 
             StoreLifetimeStatsService::storeLifetimeStatsToDB($playerId, $playerStats);
